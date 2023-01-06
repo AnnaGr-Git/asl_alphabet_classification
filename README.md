@@ -163,7 +163,7 @@ end of the project.
 >
 > Answer:
 
---- question 1 fill here ---
+37
 
 ### Question 2
 > **Enter the study number for each member in the group**
