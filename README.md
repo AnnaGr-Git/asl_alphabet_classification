@@ -108,8 +108,8 @@ end of the project.
 
 ### Week 1
 
-* [ ] Create a git repository
-* [ ] Make sure that all team members have write access to the github repository
+* [x] Create a git repository
+* [x] Make sure that all team members have write access to the github repository
 * [ ] Create a dedicated environment for you project to keep track of your packages
 * [ ] Create the initial file structure using cookiecutter
 * [ ] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
@@ -174,7 +174,7 @@ end of the project.
 >
 > Answer:
 
---- question 2 fill here ---
+s213637, s220279, s220285, s212599
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
