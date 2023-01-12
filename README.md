@@ -1,4 +1,4 @@
-ASL alphabet classification
+ASL Alphabet Classification
 ==============================
 
 In this project, we will classify images of ASL-hand-signs into the corresponding letters.
