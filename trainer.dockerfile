@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y git
 COPY requirements.txt requirements.txt
 COPY setup.py setup.py
 COPY src/ src/
-COPY .dvc .dvc
+COPY .dvc/ .dvc/
 COPY .git .git
 
 WORKDIR /
