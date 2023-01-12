@@ -9,8 +9,6 @@ RUN apt update && \
 # git is needed to run DVC as we use git for version control
 RUN apt-get update && apt-get install -y git
 
-RUN dvc pull
-
 COPY requirements.txt requirements.txt
 COPY setup.py setup.py
 COPY src/ src/
