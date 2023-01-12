@@ -15,9 +15,8 @@ datasets==1.17.0
 hydra-core==1.1.1
 omegaconf==2.1.1
 protobuf==3.19.3
-python-dotenv==0.19.2
 pytorch_lightning==1.5.8
 scikit_learn==1.0.2
-torch==1.9.0
-transformers==4.11.0
+torch==1.13.1
 wandb==0.12.9
+
