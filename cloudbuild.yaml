@@ -1,5 +1,5 @@
 steps:
    - name: 'gcr.io/cloud-builders/docker'
-     args: ['build', '-f', 'trainer.dockerfile', '.', '-t', 'gcr.io/aslalphabet-374510/testing']
+     args: ['build', '-t', 'gcr.io/aslalphabet-374510/testing', '.']
    - name: 'gcr.io/cloud-builders/docker'
      args: ['push', 'gcr.io/aslalphabet-374510/testing']
