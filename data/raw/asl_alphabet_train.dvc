@@ -1,0 +1,5 @@
+outs:
+- md5: 6076fbc328e1823fb0d04f06deb0204c.dir
+  size: 1106140179
+  nfiles: 87000
+  path: asl_alphabet_train
