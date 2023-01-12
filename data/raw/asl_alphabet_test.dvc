@@ -1,0 +1,5 @@
+outs:
+- md5: d28cf5f7258fee4758de2446e2fe5f6e.dir
+  size: 331303
+  nfiles: 28
+  path: asl_alphabet_test

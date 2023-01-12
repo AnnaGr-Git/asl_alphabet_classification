@@ -37,7 +37,6 @@ dependencies:
       - dictdiffer==0.9.0
       - diskcache==5.4.0
       - distro==1.8.0
-      - docopt==0.6.2
       - docutils==0.19
       - dpath==2.1.4
       - dulwich==0.20.50
@@ -96,7 +95,6 @@ dependencies:
       - packaging==23.0
       - pathspec==0.9.0
       - pillow==9.4.0
-      - pipreqs==0.4.11
       - prompt-toolkit==3.0.36
       - protobuf==4.21.12
       - psutil==5.9.4
@@ -146,7 +144,6 @@ dependencies:
       - vine==5.0.0
       - voluptuous==0.13.1
       - wcwidth==0.2.5
-      - yarg==0.1.9
       - yarl==1.8.2
       - zc-lockfile==2.0
 prefix: /Users/danielschober/miniconda3/envs/MLOPS_project
