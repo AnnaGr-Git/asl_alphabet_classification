@@ -4,10 +4,11 @@ from src.data.make_dataset import ASLDataset
 
 
 def main():
-    onehotencoded = True
+    onehotencoded = False
     train_test_split = 0.8
 
     train_set = ASLDataset(data_folder="/home/anna/Dokumente/MLops/asl_alphabet_classification/data/processed", train=True, onehotencoded=onehotencoded)
+    print(len(train_set))
     print(train_set.classes)
     print(train_set.imgs.shape)
     print(train_set.labels.shape)
