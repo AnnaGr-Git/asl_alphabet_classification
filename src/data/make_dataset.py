@@ -93,9 +93,7 @@ def cli():
     default=192,
     help="Size that image should be resized to. For no resizing, pass None.",
 )
-@click.option(
-    "--input_filepath", default="data/raw", help="Filepath where raw data is located."
-)
+@click.option("--input_filepath", default="data/raw", help="Filepath where raw data is located.")
 @click.option(
     "--output_filepath",
     default="data/processed",
@@ -106,9 +104,7 @@ def cli():
     default="data/interim",
     help="Filepath where intermediate data is saved.",
 )
-def preprocess(
-    num_samples, img_size, input_filepath, output_filepath, interim_filepath
-):
+def preprocess(num_samples, img_size, input_filepath, output_filepath, interim_filepath):
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../processed).
     """
@@ -120,9 +116,7 @@ def preprocess(
     print(file_name)
 
     # Define intermediate path to train and test directory
-    training_folder = os.path.join(
-        interim_filepath, "asl_alphabet_train/asl_alphabet_train/"
-    )
+    training_folder = os.path.join(interim_filepath, "asl_alphabet_train/asl_alphabet_train/")
     test_folder = os.path.join(interim_filepath, "asl_alphabet_test/asl_alphabet_test/")
 
     if not (os.path.exists(training_folder) and os.path.exists(test_folder)):
