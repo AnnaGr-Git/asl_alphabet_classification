@@ -13,3 +13,4 @@ setuptools==65.7.0
 timm==0.6.12
 torch==1.13.1
 torchvision==0.14.1
+pre-commit

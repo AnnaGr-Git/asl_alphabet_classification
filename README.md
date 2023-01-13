@@ -148,6 +148,24 @@ TODO: run how to train and evaluate
 
 TODO: explain the parameters
 
-## Running with docker
+## Docker
 
 TODO: Explain how to run with docker
+
+## Continuous integration
+
+### Pre-commits
+
+Run pre-commits to check code formating, type hints and Docstring coverage.
+```shell
+pre-commit run --all-files
+```
+
+You can enable the pre-commit hooks to run everytime you do a commit using
+```shell
+pre-commit install
+```
+In case you want to commit without running the pre-commit hooks, do:
+```shell
+git commit -m <message> --no-verify
+```
