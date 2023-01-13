@@ -40,6 +40,8 @@ if __name__ == "__main__":
 
     with torch.no_grad():
         out = m(dummy_data)
+
+    print(out.shape)
     probabilities = torch.nn.functional.softmax(out[0], dim=0)
 
     print(probabilities.shape)

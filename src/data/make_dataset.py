@@ -6,7 +6,6 @@ import glob
 import logging
 from pathlib import Path
 from PIL import Image
-from dotenv import find_dotenv, load_dotenv
 from torch.utils.data import Dataset
 from zipfile import ZipFile
 import torch
@@ -80,6 +79,10 @@ class ASLDataset(Dataset):
 
     def __getitem__(self, idx):
         return (self.imgs[idx].float(), self.labels[idx].float())
+
+@click.group()
+def cli():
+    pass
 
 
 def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepath:str, interim_filepath:str):
@@ -200,10 +203,6 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
 
     torch.save(test_images, os.path.join(testpath, "images.pt"))
     np.save(os.path.join(testpath, "labels.npy"), np.array(test_labels))
-
-@click.group()
-def cli():
-    pass
 
 @click.command()
 @click.option('--num_samples', default=5, help="Number of training samples per class")
