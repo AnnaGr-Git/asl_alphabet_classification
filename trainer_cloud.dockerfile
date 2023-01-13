@@ -9,17 +9,22 @@ RUN apt update && \
 # git is needed to run DVC as we use git for version control
 RUN apt-get update && apt-get install -y git
 
+# Make sure gsutil will use the default service account
+RUN echo '[GoogleCompute]\nservice_account = default' > /etc/boto.cfg
+
 COPY requirements.txt requirements.txt
 COPY setup.py setup.py
 COPY src/ src/
 COPY .dvc/ .dvc/
 COPY .git .git
 COPY data.dvc data.dvc
+COPY entrypoint.sh entrypoint.sh
+
 
 WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
+RUN pip install dvc
 RUN pip install dvc[gs]
-RUN dvc pull
 
 
-ENTRYPOINT ["python", "-u", "src/models/train_model.py"]
+ENTRYPOINT ["sh", "entrypoint.sh"]

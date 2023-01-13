@@ -1,5 +1,7 @@
+# builds an image when pushing code and pushes it to gcp 
+
 steps:
    - name: 'gcr.io/cloud-builders/docker'
-     args: ['build', '-t', 'gcr.io/aslalphabet-374510/testing1', '.']
+     args: ['build', '-f', 'trainer_cloud.dockerfile', '-t', 'gcr.io/aslalphabet-374510/testing1', '.']
    - name: 'gcr.io/cloud-builders/docker'
      args: ['push', 'gcr.io/aslalphabet-374510/testing1']
