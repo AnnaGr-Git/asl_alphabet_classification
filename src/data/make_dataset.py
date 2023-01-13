@@ -61,7 +61,7 @@ class ASLDataset(Dataset):
     def load_images(self) -> torch.Tensor:
         return torch.load(os.path.join(self.root_dir, self.img_file))
 
-    def load_labels(self, onehotencoded: bool) -> tuple[torch.Tensor, dict]:
+    def load_labels(self, onehotencoded: bool) -> typing.Tuple[torch.Tensor, dict]:
         labels = np.load(os.path.join(self.root_dir, self.label_file))
 
         classes = np.unique(labels)
@@ -78,6 +78,9 @@ class ASLDataset(Dataset):
 
         if onehotencoded:
             encoded = torch.nn.functional.one_hot(encoded)
+
+        print(type(encoded))
+        print(type(class_dict))
 
         return encoded, class_dict
 
