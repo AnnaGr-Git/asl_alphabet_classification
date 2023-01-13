@@ -27,10 +27,10 @@ def test_data():
     dummy_test_labels = np.array(classes)
 
     # Save data in files
-    trainpath = "processed/train/"
+    trainpath = "tests/dummydata/train/"
     if not os.path.isdir(trainpath):
         os.makedirs(trainpath)
-    testpath = "processed/test/"
+    testpath = "tests/dummydata/test/"
     if not os.path.isdir(testpath):
         os.makedirs(testpath)
 
@@ -40,8 +40,8 @@ def test_data():
     np.save(os.path.join(testpath, "labels.npy"), np.array(dummy_test_labels))
     
     # Labels are one-hot-encoded
-    trainset = ASLDataset(data_folder="processed/", train=True, onehotencoded=onehotencoded)
-    testset = ASLDataset(data_folder="processed/", train=False, onehotencoded=onehotencoded)
+    trainset = ASLDataset(data_folder="tests/dummydata/", train=True, onehotencoded=onehotencoded)
+    testset = ASLDataset(data_folder="tests/dummydata/", train=False, onehotencoded=onehotencoded)
     assert len(trainset) == N_train
     assert len(testset) == N_test
     assert trainset.imgs.shape == torch.Size([N_train, 3, img_size, img_size])
