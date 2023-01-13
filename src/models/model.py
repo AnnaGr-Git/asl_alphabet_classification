@@ -8,7 +8,7 @@ import torch
 class MyAwesomeModel(LightningModule):
     def __init__(self):
         super().__init__()
-        self.m = timm.create_model('resnet18', pretrained=True, num_classes=24)
+        self.m = timm.create_model('resnet18', pretrained=True, num_classes=29)
 
         # freeze all layers except last
         for name, param in self.m.named_parameters():
