@@ -1,23 +1,27 @@
+from pathlib import Path
+
 from torch.utils.data import random_split
 
 from src.data.make_dataset import ASLDataset
 
-from pathlib import Path
 
-
-def main():
+def main() -> None:
     onehotencoded = True
     train_test_split = 0.8
 
     root_path = Path()
     # print(root_path)
 
-    train_set = ASLDataset(data_folder=root_path / "data/processed", train=True, onehotencoded=onehotencoded)
+    train_set = ASLDataset(
+        data_folder=root_path / "data/processed", train=True, onehotencoded=onehotencoded
+    )
     print(train_set.classes)
     print(train_set.imgs.shape)
     print(train_set.labels.shape)
 
-    test_set = ASLDataset(data_folder=root_path / "data/processed", train=False, onehotencoded=onehotencoded)
+    test_set = ASLDataset(
+        data_folder=root_path / "data/processed", train=False, onehotencoded=onehotencoded
+    )
     print(test_set.imgs.shape)
 
     # Split dataset in train and validation set

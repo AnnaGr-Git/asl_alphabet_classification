@@ -6,7 +6,7 @@ In this project, we will classify images of ASL-hand-signs into the correspondin
 ## Reproduce using the newest build with Docker image
 The newest image created from the latest build from the repo can be pulled from the Google Cloud Container with the following command:
 ```bash
-docker pull gcr.io/aslalphabet-374510/testing1:latest  
+docker pull gcr.io/aslalphabet-374510/testing1:latest
 ```
 
 ## Run a training in the cloud
