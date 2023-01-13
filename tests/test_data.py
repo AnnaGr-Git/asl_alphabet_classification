@@ -49,5 +49,5 @@ def test_data():
 
     # Labels are encoded labels (int)
     onehotencoded = False
-    trainset = ASLDataset(data_folder="processed/", train=True, onehotencoded=onehotencoded)
+    trainset = ASLDataset(data_folder="tests/dummydata/", train=True, onehotencoded=onehotencoded)
     assert trainset.labels.shape == torch.Size([N_train])
