@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
-import click
-import os
-import ntpath
 import glob
 import logging
-from pathlib import Path
-from PIL import Image
-from dotenv import find_dotenv, load_dotenv
-from torch.utils.data import Dataset
+import ntpath
+import os
 from zipfile import ZipFile
-import torch
+
+import click
 import numpy as np
+import torch
+from PIL import Image
+from torch.utils.data import Dataset
 from torchvision import transforms
 
 
@@ -70,7 +69,7 @@ class ASLDataset(Dataset):
             idx += 1
 
         encoded = []
-        [encoded.append(class_dict[l]) for l in labels]
+        [encoded.append(class_dict[lab]) for lab in labels]
         encoded = torch.tensor(encoded, dtype=torch.int64)
 
         if onehotencoded:
@@ -132,7 +131,7 @@ def preprocess(
         print(f"Extract data of zip folder in {interim_filepath}...")
         z.extractall(path=interim_filepath)
 
-    ## Get all training files
+    # Get all training files
     convert_tensor = transforms.ToTensor()
 
     class_names = []
@@ -176,7 +175,7 @@ def preprocess(
     print(f"Shape Train images: {train_images.shape}")
     print(f"Shape Train labels: {np.shape(train_labels)}")
 
-    ## Get all test files
+    # Get all test files
     test_files = glob.glob(os.path.join(test_folder, "*.jpg"))
     count = 0
     test_labels = []
