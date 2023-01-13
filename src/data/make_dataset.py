@@ -33,7 +33,7 @@ class ASLDataset(Dataset):
         Prints the person's name and age.
     """
 
-    def __init__(self, data_folder="/data/processed", train:bool=True, img_file="images.pt", label_file="labels.npy", onehotencoded:bool=True):
+    def __init__(self, data_folder:str="/data/processed", train:bool=True, img_file:str="images.pt", label_file:str="labels.npy", onehotencoded:bool=True):
         if train:
             dir = "train/"
         else:
@@ -50,7 +50,7 @@ class ASLDataset(Dataset):
     def load_images(self):
         return torch.load(os.path.join(self.root_dir, self.img_file))
     
-    def load_labels(self, onehotencoded):
+    def load_labels(self, onehotencoded:bool):
         labels = np.load(os.path.join(self.root_dir, self.label_file))
 
         classes = np.unique(labels)
@@ -74,17 +74,7 @@ class ASLDataset(Dataset):
         return (self.imgs[idx], self.labels[idx])
 
 
-@click.group()
-def cli():
-    pass
-
-@click.command()
-@click.option('--num_samples', default=5, help="Number of training samples per class")
-@click.option('--img_size', default=192, help="Size that image should be resized to. For no resizing, pass None.")
-@click.option('--input_filepath', default='data/raw', help="Filepath where raw data is located.")
-@click.option('--output_filepath', default='data/processed', help="Filepath where raw data is located.")
-@click.option('--interim_filepath', default='data/interim', help="Filepath where intermediate data is saved.")
-def preprocess(num_samples, img_size, input_filepath, output_filepath, interim_filepath):
+def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepath:str, interim_filepath:str):
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
     """
@@ -92,6 +82,7 @@ def preprocess(num_samples, img_size, input_filepath, output_filepath, interim_f
     logger.info('Making project data set from raw data')
 
     # Get path of zip
+    print(input_filepath)
     file_name = glob.glob(os.path.join(input_filepath, "*.zip"))[0]
     print(file_name)
 
@@ -203,8 +194,24 @@ def preprocess(num_samples, img_size, input_filepath, output_filepath, interim_f
     np.save(os.path.join(testpath, 'labels.npy'), np.array(test_labels))
 
 
+@click.group()
+def cli():
+    pass
 
-cli.add_command(preprocess)
+@click.command()
+@click.option('--num_samples', default=5, help="Number of training samples per class")
+@click.option('--img_size', default=192, help="Size that image should be resized to. For no resizing, pass None.")
+@click.option('--input_filepath', default='data/raw', help="Filepath where raw data is located.")
+@click.option('--output_filepath', default='data/processed', help="Filepath where raw data is located.")
+@click.option('--interim_filepath', default='data/interim', help="Filepath where intermediate data is saved.")
+def preprocess_command(num_samples, img_size, input_filepath, output_filepath, interim_filepath):
+    preprocess(num_samples, img_size, input_filepath, output_filepath, interim_filepath)
+
+
+
+
+
+cli.add_command(preprocess_command)
 
 if __name__ == '__main__':
     cli()
