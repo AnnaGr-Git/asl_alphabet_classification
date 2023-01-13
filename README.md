@@ -3,6 +3,21 @@ ASL Alphabet Classification
 
 In this project, we will classify images of ASL-hand-signs into the corresponding letters.
 
+## Testing
+### Run pytests
+```bash
+coverage run -m pytest tests/
+```
+or
+```bash
+pytest tests/
+```
+
+### Make coverage report
+```bash
+coverage report -m -i
+```
+
 ## Reproduce using the newest build with Docker image
 The newest image created from the latest build from the repo can be pulled from the Google Cloud Container with the following command:
 ```bash
