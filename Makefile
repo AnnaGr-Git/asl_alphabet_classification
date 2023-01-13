@@ -27,7 +27,17 @@ requirements: test_environment
 
 ## Make Dataset
 data:
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+	$(PYTHON_INTERPRETER) src/data/make_dataset.py preprocess
+
+requirements_file:
+	@echo "# local package" > requirements.txt
+	@echo "-e ." >> requirements.txt
+	@echo "" >> requirements.txt
+	@echo "# external requirements" >> requirements.txt
+	@pipreqs --print >> requirements.txt
+
+
+
 
 ## Delete all compiled Python files
 clean:

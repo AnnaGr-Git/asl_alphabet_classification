@@ -1,18 +1,19 @@
 from typing import Any
-from pytorch_lightning import LightningModule
+
 import timm
-from torch import nn, optim
 import torch
+from pytorch_lightning import LightningModule
+from torch import nn, optim
 
 
 class MyAwesomeModel(LightningModule):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
-        self.m = timm.create_model('resnet18', pretrained=True, num_classes=29)
+        self.m = timm.create_model("resnet18", pretrained=True, num_classes=29)
 
         # freeze all layers except last
         for name, param in self.m.named_parameters():
-            if 'fc.weight' not in name and 'fc.bias' not in name:
+            if "fc.weight" not in name and "fc.bias" not in name:
                 param.requires_grad = False
             else:
                 param.requires_grad = True
@@ -21,10 +22,10 @@ class MyAwesomeModel(LightningModule):
         # for name, param in self.m.named_parameters():
         #     print(f"{name}: {param.shape}")
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.m(x)
 
-    def training_step(self, batch, batch_idx):
+    def training_step(self, batch: tuple[torch.Tensor, torch.Tensor], batch_idx: int) -> float:
         data, target = batch
         preds = self(data)
         loss = self.criterium(preds, target)
@@ -32,6 +33,7 @@ class MyAwesomeModel(LightningModule):
 
     def configure_optimizers(self) -> Any:
         return optim.Adam(self.parameters(), lr=1e-2)
+
 
 if __name__ == "__main__":
     m = MyAwesomeModel()

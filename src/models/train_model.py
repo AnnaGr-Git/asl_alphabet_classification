@@ -1,17 +1,13 @@
 from pathlib import Path
+
 from pytorch_lightning import Trainer
-from src.models.model import MyAwesomeModel
-from torch.utils.data import DataLoader
-from torch.utils.data import random_split
+from torch.utils.data import DataLoader, random_split
 
 from src.data.make_dataset import ASLDataset
+from src.models.model import MyAwesomeModel
 
 model = MyAwesomeModel()  # this is our LightningModule
-#trainer = Trainer(accelerator='gpu', devices=1, max_epochs=10, log_every_n_steps=1)
-trainer = Trainer(max_epochs=10, log_every_n_steps=1)
-#trainer = Trainer(max_epochs=10, log_every_n_steps=1)
-#trainer = Trainer(accelerator="mps", devices=1)
-# Selects the accelerator
+trainer = Trainer(accelerator="gpu", devices=1, max_epochs=10, log_every_n_steps=1)
 
 
 root_path = Path()
@@ -30,6 +26,8 @@ train_loader = DataLoader(train_set, batch_size=64, shuffle=True, num_workers=0)
 # val_loader = DataLoader(val_set, batch_size=64)
 # test_loader = DataLoader(test_set, batch_size=64)
 
-trainer.fit(model, train_dataloaders=train_loader
-# , val_dataloaders=val_loader
+trainer.fit(
+    model,
+    train_dataloaders=train_loader
+    # , val_dataloaders=val_loader
 )

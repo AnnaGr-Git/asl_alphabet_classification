@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
-import click
-import os
-import ntpath
 import glob
 import logging
-from pathlib import Path
-from PIL import Image
-from dotenv import find_dotenv, load_dotenv
-from torch.utils.data import Dataset
+import ntpath
+import os
+import pathlib
+import typing
 from zipfile import ZipFile
-import torch
+
+import click
 import numpy as np
+import torch
+from PIL import Image
+from torch.utils.data import Dataset
 from torchvision import transforms
 
 
@@ -36,12 +37,12 @@ class ASLDataset(Dataset):
 
     def __init__(
         self,
-        data_folder="/data/processed",
+        data_folder: typing.Union[str, pathlib.Path] = "/data/processed",
         train: bool = True,
-        img_file="images.pt",
-        label_file="labels.npy",
+        img_file: str = "images.pt",
+        label_file: str = "labels.npy",
         onehotencoded: bool = True,
-    ):
+    ) -> None:
         if train:
             dir = "train/"
         else:
@@ -52,13 +53,13 @@ class ASLDataset(Dataset):
         self.imgs = self.load_images()
         self.labels, self.classes = self.load_labels(onehotencoded)
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.imgs.shape[0]
 
-    def load_images(self):
+    def load_images(self) -> torch.Tensor:
         return torch.load(os.path.join(self.root_dir, self.img_file))
 
-    def load_labels(self, onehotencoded):
+    def load_labels(self, onehotencoded: bool) -> tuple[torch.Tensor, dict]:
         labels = np.load(os.path.join(self.root_dir, self.label_file))
 
         classes = np.unique(labels)
@@ -70,7 +71,7 @@ class ASLDataset(Dataset):
             idx += 1
 
         encoded = []
-        [encoded.append(class_dict[l]) for l in labels]
+        encoded.extend([class_dict[label] for label in labels])
         encoded = torch.tensor(encoded, dtype=torch.int64)
 
         if onehotencoded:
@@ -78,12 +79,12 @@ class ASLDataset(Dataset):
 
         return encoded, class_dict
 
-    def __getitem__(self, idx):
+    def __getitem__(self, idx: int) -> tuple[torch.Tensor, float]:
         return (self.imgs[idx].float(), self.labels[idx].float())
 
 
 @click.group()
-def cli():
+def cli() -> None:
     pass
 
 
@@ -94,9 +95,7 @@ def cli():
     default=192,
     help="Size that image should be resized to. For no resizing, pass None.",
 )
-@click.option(
-    "--input_filepath", default="data/raw", help="Filepath where raw data is located."
-)
+@click.option("--input_filepath", default="data/raw", help="Filepath where raw data is located.")
 @click.option(
     "--output_filepath",
     default="data/processed",
@@ -108,8 +107,12 @@ def cli():
     help="Filepath where intermediate data is saved.",
 )
 def preprocess(
-    num_samples, img_size, input_filepath, output_filepath, interim_filepath
-):
+    num_samples: int,
+    img_size: int,
+    input_filepath: str,
+    output_filepath: str,
+    interim_filepath: str,
+) -> None:
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../processed).
     """
@@ -121,9 +124,7 @@ def preprocess(
     print(file_name)
 
     # Define intermediate path to train and test directory
-    training_folder = os.path.join(
-        interim_filepath, "asl_alphabet_train/asl_alphabet_train/"
-    )
+    training_folder = os.path.join(interim_filepath, "asl_alphabet_train/asl_alphabet_train/")
     test_folder = os.path.join(interim_filepath, "asl_alphabet_test/asl_alphabet_test/")
 
     if not (os.path.exists(training_folder) and os.path.exists(test_folder)):
@@ -132,7 +133,7 @@ def preprocess(
         print(f"Extract data of zip folder in {interim_filepath}...")
         z.extractall(path=interim_filepath)
 
-    ## Get all training files
+    # Get all training files
     convert_tensor = transforms.ToTensor()
 
     class_names = []
@@ -176,7 +177,7 @@ def preprocess(
     print(f"Shape Train images: {train_images.shape}")
     print(f"Shape Train labels: {np.shape(train_labels)}")
 
-    ## Get all test files
+    # Get all test files
     test_files = glob.glob(os.path.join(test_folder, "*.jpg"))
     count = 0
     test_labels = []

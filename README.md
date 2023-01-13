@@ -3,19 +3,103 @@ ASL Alphabet Classification
 
 In this project, we will classify images of ASL-hand-signs into the corresponding letters.
 
-## Reproduce using the newest build with Docker image
-The newest image created from the latest build from the repo can be pulled from the Google Cloud Container with the following command:
-```bash
-docker pull gcr.io/aslalphabet-374510/testing1:latest  
+## Getting Started
+
+### Python environment
+
+To run the code, a conda environment is required.
+Check the [Conda website](https://www.anaconda.com/) for how to install it.
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone git@github.com:AnnaGr-Git/asl_alphabet_classification.git
+   ```
+2. Create and activate a new conda environment
+   ```sh
+   conda env create -f environment.yml
+   conda activate MLOPS_project
+   ```
+3. Install further pre-requisites
+   ```sh
+   pip install -f requirements.txt
+   ```
+
+## Usage
+
+
+## Fetch dataset
+
+Run the following command.
+```shell
+dvc pull
 ```
 
-## Run a training in the cloud
+After running the command, the `data/` directory will be created and the data will be downloaded under the `data/raw/` directory.
+
+### Preprocessing
+
+Run the following command to preprocess the data.
+```shell
+python src/data/make_dataset.py preprocess
+```
+
+## Train and Evaluate
+
+TODO: run how to train and evaluate
+
+### Parameters
+
+TODO: explain the parameters
+
+## Docker
+
+### Reproduce using the newest build with Docker image
+The newest image created from the latest build from the repo can be pulled from the Google Cloud Container with the following command:
+```bash
+docker pull gcr.io/aslalphabet-374510/training:latest
+```
+
+### Run a training in the cloud
 We are using Vertex AI to run a training in Google Cloud. To do that run the following:
 ```bash
 gcloud ai custom-jobs create \
    --region=europe-west1 \
-   --display-name=training-run \
+   --display-name=trainingrun \
    --config=config_cloud.yaml
+```
+
+## Continuous integration
+
+### Run pytests
+```bash
+coverage run -m pytest tests/
+```
+or
+```bash
+pytest tests/
+```
+
+### Make coverage report
+```bash
+coverage report -m -i
+```
+
+### Pre-commits
+
+Run pre-commits to check code formating, type hints and Docstring coverage.
+```shell
+pre-commit run --all-files
+```
+
+You can enable the pre-commit hooks to run everytime you do a commit using
+```shell
+pre-commit install
+```
+In case you want to commit without running the pre-commit hooks, do:
+```shell
+git commit -m <message> --no-verify
 ```
 
 
@@ -91,3 +175,5 @@ We plan on utilizing one of the strengths of the Transformers framework which is
 We are using the Kaggle dataset on [ASL alphabet](https://www.kaggle.com/datasets/grassknoted/asl-alphabet). The dataset contains a `train` and a `test` folder. The `test` folder has 1 image for each letter in the alphabet. The training data has 87 thousand images of 200x200 pixels. The dataset is labeled with one of 29 classes, these are the 26 letters of the alphabet, SPACE, DELETE and NOTHING. The images have  some variation, this includes different lighting conditions, hand sizes, distance of hand from camera.
 ### What deep learning models do you expect to use
 We will use a pretrained version of resnet, and finetune it on our data [RESNET](https://huggingface.co/docs/timm/models/resnet). RESNET is a model that learns residual functions with reference to the layer inputs, instead of learning unreferenced functions. Instead of hoping each few stacked layers directly fit a desired underlying mapping, residual nets let these layers fit a residual mapping.
+
+

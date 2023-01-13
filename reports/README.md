@@ -55,12 +55,12 @@ end of the project.
 * [x] Create a dedicated environment for your project to keep track of your packages
 * [x] Create the initial file structure using cookiecutter
 * [x] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
-* [ ] Add a model file and a training script and get that running
+* [x] Add a model file and a training script and get that running
 * [x] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
 * [ ] Remember to comply with good coding practices (`pep8`) while doing the project
 * [ ] Do a bit of code typing and remember to document essential parts of your code
 * [x] Setup version control for your data or part of your data
-* [ ] Construct one or multiple docker files for your code
+* [x] Construct one or multiple docker files for your code
 * [x] Build the docker files locally and make sure they work as intended
 * [ ] Write one or multiple configurations files for your experiments
 * [ ] Used Hydra to load the configurations and manage your hyperparameters
@@ -72,9 +72,9 @@ end of the project.
 
 ### Week 2
 
-* [ ] Write unit tests related to the data part of your code
-* [ ] Write unit tests related to model construction and or model training
-* [ ] Calculate the coverage.
+* [x] Write unit tests related to the data part of your code
+* [x] Write unit tests related to model construction and or model training
+* [x] Calculate the coverage.
 * [ ] Get some continuous integration running on the github repository
 * [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [x] Create a trigger workflow for automatically building your docker images
