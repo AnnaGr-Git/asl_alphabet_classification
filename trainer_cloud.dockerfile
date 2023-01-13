@@ -20,11 +20,9 @@ COPY .git .git
 COPY data.dvc data.dvc
 COPY entrypoint.sh entrypoint.sh
 
-
 WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install dvc
 RUN pip install dvc[gs]
-
 
 ENTRYPOINT ["sh", "entrypoint.sh"]
