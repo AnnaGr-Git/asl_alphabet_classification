@@ -29,7 +29,7 @@ We are using Vertex AI to run a training in Google Cloud. To do that run the fol
 ```bash
 gcloud ai custom-jobs create \
    --region=europe-west1 \
-   --display-name=training-run \
+   --display-name=trainingrun \
    --config=config_cloud.yaml
 ```
 
