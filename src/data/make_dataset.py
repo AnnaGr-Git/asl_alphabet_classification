@@ -13,6 +13,7 @@ import torch
 import numpy as np
 from torchvision import transforms
 
+
 class ASLDataset(Dataset):
     """
     A class to load the MNIST dataset
@@ -33,7 +34,14 @@ class ASLDataset(Dataset):
         Prints the person's name and age.
     """
 
-    def __init__(self, data_folder:str="/data/processed", train:bool=True, img_file:str="images.pt", label_file:str="labels.npy", onehotencoded:bool=True):
+    def __init__(
+        self,
+        data_folder="/data/processed",
+        train: bool = True,
+        img_file="images.pt",
+        label_file="labels.npy",
+        onehotencoded: bool = True,
+    ):
         if train:
             dir = "train/"
         else:
@@ -43,14 +51,14 @@ class ASLDataset(Dataset):
         self.label_file = label_file
         self.imgs = self.load_images()
         self.labels, self.classes = self.load_labels(onehotencoded)
-    
+
     def __len__(self):
         return self.imgs.shape[0]
-    
+
     def load_images(self):
         return torch.load(os.path.join(self.root_dir, self.img_file))
-    
-    def load_labels(self, onehotencoded:bool):
+
+    def load_labels(self, onehotencoded):
         labels = np.load(os.path.join(self.root_dir, self.label_file))
 
         classes = np.unique(labels)
@@ -69,9 +77,9 @@ class ASLDataset(Dataset):
             encoded = torch.nn.functional.one_hot(encoded)
 
         return encoded, class_dict
-    
+
     def __getitem__(self, idx):
-        return (self.imgs[idx], self.labels[idx])
+        return (self.imgs[idx].float(), self.labels[idx].float())
 
 
 def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepath:str, interim_filepath:str):
@@ -79,7 +87,7 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
         cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    logger.info('Making project data set from raw data')
+    logger.info("Making project data set from raw data")
 
     # Get path of zip
     print(input_filepath)
@@ -87,16 +95,17 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
     print(file_name)
 
     # Define intermediate path to train and test directory
-    training_folder = os.path.join(interim_filepath, "asl_alphabet_train/asl_alphabet_train/")
+    training_folder = os.path.join(
+        interim_filepath, "asl_alphabet_train/asl_alphabet_train/"
+    )
     test_folder = os.path.join(interim_filepath, "asl_alphabet_test/asl_alphabet_test/")
-
 
     if not (os.path.exists(training_folder) and os.path.exists(test_folder)):
         # Extract zip file
         z = ZipFile(file_name, "r")
         print(f"Extract data of zip folder in {interim_filepath}...")
         z.extractall(path=interim_filepath)
- 
+
     ## Get all training files
     convert_tensor = transforms.ToTensor()
 
@@ -118,12 +127,12 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
             # Resize image
             if img_size is not None:
                 img = img.resize((img_size, img_size))
-            
+
             # Convert PIL img to tensor
             img_t = convert_tensor(img)
-        
+
             # Normalize image
-            mean, std = img_t.mean([1,2]), img_t.std([1,2])
+            mean, std = img_t.mean([1, 2]), img_t.std([1, 2])
             transform_norm = transforms.Normalize(mean, std)
             img_n = transform_norm(img_t)
             img_n = img_n.unsqueeze(0)
@@ -151,19 +160,19 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
         idx = tail.find("_")
         label = tail[:idx]
         test_labels.append(label)
-        
+
         # Read image
         img = Image.open(file)
 
         # Resize image
         if img_size is not None:
             img = img.resize((img_size, img_size))
-        
+
         # Convert PIL img to tensor
         img_t = convert_tensor(img)
-    
+
         # Normalize image
-        mean, std = img_t.mean([1,2]), img_t.std([1,2])
+        mean, std = img_t.mean([1, 2]), img_t.std([1, 2])
         transform_norm = transforms.Normalize(mean, std)
         img_n = transform_norm(img_t)
         img_n = img_n.unsqueeze(0)
@@ -178,7 +187,6 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
     print(f"Shape Test images: {test_images.shape}")
     print(f"Shape Test labels: {np.shape(test_labels)}")
 
-
     # Save data in files
     trainpath = os.path.join(output_filepath, "train/")
     if not os.path.isdir(trainpath):
@@ -187,12 +195,11 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
     if not os.path.isdir(testpath):
         os.makedirs(testpath)
 
-    torch.save(train_images, os.path.join(trainpath, 'images.pt'))
-    np.save(os.path.join(trainpath, 'labels.npy'), np.array(train_labels))
+    torch.save(train_images, os.path.join(trainpath, "images.pt"))
+    np.save(os.path.join(trainpath, "labels.npy"), np.array(train_labels))
 
-    torch.save(test_images, os.path.join(testpath, 'images.pt'))
-    np.save(os.path.join(testpath, 'labels.npy'), np.array(test_labels))
-
+    torch.save(test_images, os.path.join(testpath, "images.pt"))
+    np.save(os.path.join(testpath, "labels.npy"), np.array(test_labels))
 
 @click.group()
 def cli():
@@ -207,11 +214,7 @@ def cli():
 def preprocess_command(num_samples, img_size, input_filepath, output_filepath, interim_filepath):
     preprocess(num_samples, img_size, input_filepath, output_filepath, interim_filepath)
 
-
-
-
-
 cli.add_command(preprocess_command)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli()

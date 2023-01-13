@@ -1,7 +1,23 @@
-ASL alphabet classification
+ASL Alphabet Classification
 ==============================
 
 In this project, we will classify images of ASL-hand-signs into the corresponding letters.
+
+## Reproduce using the newest build with Docker image
+The newest image created from the latest build from the repo can be pulled from the Google Cloud Container with the following command:
+```bash
+docker pull gcr.io/aslalphabet-374510/testing1:latest  
+```
+
+## Run a training in the cloud
+We are using Vertex AI to run a training in Google Cloud. To do that run the following:
+```bash
+gcloud ai custom-jobs create \
+   --region=europe-west1 \
+   --display-name=training-run \
+   --config=config_cloud.yaml
+```
+
 
 Project Organization
 ------------
