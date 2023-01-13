@@ -1,4 +1,4 @@
-# builds an image when pushing code and pushes it to gcp 
+# builds an image when pushing code and pushes it to gcp
 
 steps:
    - name: 'gcr.io/cloud-builders/docker'
