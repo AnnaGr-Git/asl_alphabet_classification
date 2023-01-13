@@ -2,6 +2,7 @@ from typing import Any
 from pytorch_lightning import LightningModule
 import timm
 from torch import nn, optim
+import torch
 
 
 class MyAwesomeModel(LightningModule):
@@ -17,6 +18,8 @@ class MyAwesomeModel(LightningModule):
                 param.requires_grad = True
 
         self.criterium = nn.CrossEntropyLoss()
+        # for name, param in self.m.named_parameters():
+        #     print(f"{name}: {param.shape}")
 
     def forward(self, x):
         return self.m(x)
@@ -32,3 +35,11 @@ class MyAwesomeModel(LightningModule):
 
 if __name__ == "__main__":
     m = MyAwesomeModel()
+
+    dummy_data = torch.rand([64, 3, 128, 128])
+
+    with torch.no_grad():
+        out = m(dummy_data)
+    probabilities = torch.nn.functional.softmax(out[0], dim=0)
+
+    print(probabilities.shape)
