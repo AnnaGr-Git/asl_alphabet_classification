@@ -1,5 +1,5 @@
-import numpy as np
 from torch.utils.data import random_split
+
 from src.data.make_dataset import ASLDataset
 
 from pathlib import Path
@@ -29,5 +29,6 @@ def main():
     train_set, val_set = random_split(train_set, [train_set_size, valid_set_size])
     print(type(val_set))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

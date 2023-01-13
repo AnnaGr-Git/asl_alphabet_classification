@@ -15,18 +15,18 @@ import yaml
 
 
 def export_env(history_only=False, include_builds=False):
-    """ Capture `conda env export` output """
-    cmd = ['conda', 'env', 'export']
+    """Capture `conda env export` output"""
+    cmd = ["conda", "env", "export"]
     if history_only:
-        cmd.append('--from-history')
+        cmd.append("--from-history")
         if include_builds:
             raise ValueError('Cannot include build versions with "from history" mode')
     if not include_builds:
-        cmd.append('--no-builds')
+        cmd.append("--no-builds")
     cp = subprocess.run(cmd, stdout=subprocess.PIPE)
     try:
         cp.check_returncode()
-    except:
+    except subprocess.CalledProcessError:
         raise
     else:
         return yaml.safe_load(cp.stdout)
@@ -35,27 +35,27 @@ def export_env(history_only=False, include_builds=False):
 def _is_history_dep(d, history_deps):
     if not isinstance(d, str):
         return False
-    d_prefix = re.sub(r'=.*', '', d)
+    d_prefix = re.sub(r"=.*", "", d)
     return d_prefix in history_deps
 
 
 def _get_pip_deps(full_deps):
     for dep in full_deps:
-        if isinstance(dep, dict) and 'pip' in dep:
+        if isinstance(dep, dict) and "pip" in dep:
             return dep
 
 
 def _combine_env_data(env_data_full, env_data_hist):
-    deps_full = env_data_full['dependencies']
-    deps_hist = env_data_hist['dependencies']
+    deps_full = env_data_full["dependencies"]
+    deps_hist = env_data_hist["dependencies"]
     deps = [dep for dep in deps_full if _is_history_dep(dep, deps_hist)]
 
     pip_deps = _get_pip_deps(deps_full)
 
     env_data = {}
-    env_data['channels'] = env_data_full['channels']
-    env_data['dependencies'] = deps
-    env_data['dependencies'].append(pip_deps)
+    env_data["channels"] = env_data_full["channels"]
+    env_data["dependencies"] = deps
+    env_data["dependencies"].append(pip_deps)
 
     return env_data
 
@@ -65,12 +65,16 @@ def main():
     env_data_hist = export_env(history_only=True)
     env_data = _combine_env_data(env_data_full, env_data_hist)
     yaml.dump(env_data, sys.stdout)
-    print('Warning: this output might contain packages installed from non-public sources, e.g. a Git repository. '
-          'You should review and test the output to make sure it works with `conda env create -f`, '
-          'and make changes as required.\n'
-          'For example, `conda-env-export` itself is not currently uploaded to PyPI, and it must be removed from '
-          'the output file, or else `conda create -f` will fail.', file=sys.stderr)
+    print(
+        """Warning: this output might contain packages installed from non-public sources,
+        e.g. a Git repository.
+        You should review and test the output to make sure it works with `conda env create -f`,
+        and make changes as required.\n
+        For example, `conda-env-export` itself is not currently uploaded to PyPI,
+        and it must be removed from the output file, or else `conda create -f` will fail.""",
+        file=sys.stderr,
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
