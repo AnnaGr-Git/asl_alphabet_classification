@@ -9,6 +9,14 @@ The newest image created from the latest build from the repo can be pulled from 
 docker pull gcr.io/aslalphabet-374510/testing1:latest  
 ```
 
+## Run a training in the cloud:
+```bash
+gcloud ai custom-jobs create \
+   --region=europe-west1 \
+   --display-name=training-run \
+   --config=config_cloud.yaml
+```
+
 
 Project Organization
 ------------
