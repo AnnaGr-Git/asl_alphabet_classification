@@ -26,8 +26,9 @@ requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
 ## Make Dataset
+num_samples = 5
 data:
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py preprocess
+$(PYTHON_INTERPRETER) src/data/make_dataset.py preprocess-command --num_samples $(num_samples)
 
 requirements_file:
 	@echo "# local package" > requirements.txt
@@ -35,9 +36,6 @@ requirements_file:
 	@echo "" >> requirements.txt
 	@echo "# external requirements" >> requirements.txt
 	@pipreqs --print >> requirements.txt
-
-
-
 
 ## Delete all compiled Python files
 clean:

@@ -7,8 +7,7 @@ from src.data.make_dataset import ASLDataset
 from src.models.model import MyAwesomeModel
 
 model = MyAwesomeModel()  # this is our LightningModule
-trainer = Trainer(accelerator="gpu", devices=1, max_epochs=10, log_every_n_steps=1)
-
+trainer = Trainer(max_epochs=10, log_every_n_steps=1)
 
 root_path = Path()
 # print(root_path)
