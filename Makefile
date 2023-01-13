@@ -26,8 +26,9 @@ requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
 ## Make Dataset
+num_samples = 5
 data:
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+	$(PYTHON_INTERPRETER) src/data/make_dataset.py preprocess-command --num_samples $(num_samples)
 
 ## Delete all compiled Python files
 clean:
