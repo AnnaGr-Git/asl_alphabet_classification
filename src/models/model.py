@@ -43,6 +43,10 @@ class MyAwesomeModel(LightningModule):
         data, target = batch
         preds = self(data)
         loss = self.criterium(preds, target)
+        # Logging
+        acc = (target.argmax(dim=-1) == preds.argmax(dim=-1)).float().mean()
+        self.log("training_loss", loss)
+        self.log("training_acc", acc)
         return loss
 
     def configure_optimizers(self) -> Any:

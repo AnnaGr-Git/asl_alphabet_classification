@@ -28,7 +28,7 @@ requirements: test_environment
 ## Make Dataset
 num_samples = 5
 data:
-$(PYTHON_INTERPRETER) src/data/make_dataset.py preprocess-command --num_samples $(num_samples)
+	$(PYTHON_INTERPRETER) src/data/make_dataset.py preprocess-command --num_samples $(num_samples)
 
 requirements_file:
 	@echo "# local package" > requirements.txt
