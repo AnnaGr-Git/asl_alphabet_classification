@@ -36,6 +36,10 @@ requirements_file:
 	@echo "# external requirements" >> requirements.txt
 	@pipreqs --print >> requirements.txt
 
+i=0
+predict:
+	$(PYTHON_INTERPRETER) src/models/predict_model.py $(i)
+
 
 
 

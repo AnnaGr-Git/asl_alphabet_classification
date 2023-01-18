@@ -20,8 +20,9 @@ def main() -> None:
     print(train_set.labels.shape)
 
     test_set = ASLDataset(
-        data_folder=root_path / "data/processed", train=False, onehotencoded=onehotencoded
+        data_folder=root_path / "data/processed", train=False, onehotencoded=False
     )
+    print(test_set[0])
     print(test_set.imgs.shape)
 
     # Split dataset in train and validation set
