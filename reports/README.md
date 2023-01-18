@@ -149,7 +149,10 @@ end of the project.
 > Answer:
 
 --- We used anaconda to manage our environments. We created a virtual environment where we installed our required packages with pip install.
-In order to use the latest version and packages, ---
+In order for all team members to use the same environment, we created an environment.yaml file. As not all required dependencies were included with the normal command conda env export and some issues were faced between different operating systems, we used a script called conda_env_export.py to save the environment correctly. To keep track of all the required packages of the project, we created a requirements.txt file. This file is created using pipreqs. If a new user wants to use our project code, the repository should be cloned and an anaconda environment should be created and activated with: conda env create -f environment.yml
+conda activate MLOPS_project
+After that, all packages need to be installed with the command: pip install -r requirements.txt
+Then, everything is ready to use.---
 
 ### Question 5
 
