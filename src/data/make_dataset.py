@@ -5,10 +5,8 @@ import ntpath
 import os
 import pathlib
 import typing
-from pathlib import Path
-from PIL import Image
-from torch.utils.data import Dataset
 from zipfile import ZipFile
+
 import click
 import numpy as np
 import torch
@@ -87,14 +85,21 @@ class ASLDataset(Dataset):
     def __getitem__(self, idx: int) -> tuple[torch.Tensor, float]:
         return (self.imgs[idx].float(), self.labels[idx].float())
 
+
 @click.group()
 def cli() -> None:
     pass
 
 
-def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepath:str, interim_filepath:str):
-    """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../processed).
+def preprocess(
+    num_samples: int,
+    img_size: int,
+    input_filepath: str,
+    output_filepath: str,
+    interim_filepath: str,
+):
+    """Runs data processing scripts to turn raw data from (../raw) into
+    cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
     logger.info("Making project data set from raw data")
@@ -143,7 +148,7 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
             # mean, std = img_t.mean([1, 2]), img_t.std([1, 2])
             # transform_norm = transforms.Normalize(mean, std)
             # img_n = transform_norm(img_t)
-            
+
             img_n = img_n.unsqueeze(0)
 
             # Add to images tensor
@@ -184,7 +189,7 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
         # mean, std = img_t.mean([1, 2]), img_t.std([1, 2])
         # transform_norm = transforms.Normalize(mean, std)
         # img_n = transform_norm(img_t)
-        
+
         img_n = img_n.unsqueeze(0)
 
         # Add to images tensor
@@ -211,14 +216,24 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
     torch.save(test_images, os.path.join(testpath, "images.pt"))
     np.save(os.path.join(testpath, "labels.npy"), np.array(test_labels))
 
+
 @click.command()
-@click.option('--num_samples', default=5, help="Number of training samples per class")
-@click.option('--img_size', default=192, help="Size that image should be resized to. For no resizing, pass None.")
-@click.option('--input_filepath', default='data/raw', help="Filepath where raw data is located.")
-@click.option('--output_filepath', default='data/processed', help="Filepath where raw data is located.")
-@click.option('--interim_filepath', default='data/interim', help="Filepath where intermediate data is saved.")
+@click.option("--num_samples", default=5, help="Number of training samples per class")
+@click.option(
+    "--img_size",
+    default=192,
+    help="Size that image should be resized to. For no resizing, pass None.",
+)
+@click.option("--input_filepath", default="data/raw", help="Filepath where raw data is located.")
+@click.option(
+    "--output_filepath", default="data/processed", help="Filepath where raw data is located."
+)
+@click.option(
+    "--interim_filepath", default="data/interim", help="Filepath where intermediate data is saved."
+)
 def preprocess_command(num_samples, img_size, input_filepath, output_filepath, interim_filepath):
     preprocess(num_samples, img_size, input_filepath, output_filepath, interim_filepath)
+
 
 cli.add_command(preprocess_command)
 

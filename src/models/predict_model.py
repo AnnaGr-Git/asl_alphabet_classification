@@ -19,19 +19,14 @@ from src.models.model import MyAwesomeModel
     default="lightning_logs/version_0/checkpoints/epoch=9-step=20.ckpt",
     help="Checkpoint file",
 )
-@click.option(
-    "--show_image",
-    default=False,
-    help="Show matplotlib image",
-    is_flag=True
-)
+@click.option("--show_image", default=False, help="Show matplotlib image", is_flag=True)
 def main(i: int, checkpoint: Path, show_image: bool) -> None:
     # print("Evaluating until hitting the ceiling")
 
     root_path = Path()
     # print(root_path.absolute() / "data/processed")
     test_set = ASLDataset(data_folder=root_path / "data/processed", train=False, onehotencoded=True)
-    
+
     img, y = test_set[int(i)]
     x = img.view(1, *img.shape)
 
@@ -53,15 +48,15 @@ def main(i: int, checkpoint: Path, show_image: bool) -> None:
     # click.echo(f"predict y item: {pred_y}")
     # click.echo(f"true y item: {true_y}")
     # print([i for i in test_set.classes.keys() if test_set.classes[i] == pred_y])
-    click.echo(f"predicted letter: {[i for i in test_set.classes.keys() if test_set.classes[i] == pred_y][0]}")
+    click.echo(
+        f"predicted letter: {[i for i in test_set.classes.keys() if test_set.classes[i] == pred_y][0]}"
+    )
     # click.echo(f"true y letter: {[i for i in test_set.classes.keys() if test_set.classes[i] == true_y][0]}")
-
-
 
     # Show image in plot
 
     if show_image:
-        img_show = torch.swapaxes(img,2,0)
+        img_show = torch.swapaxes(img, 2, 0)
         plt.imshow(img_show)
         plt.show()
 

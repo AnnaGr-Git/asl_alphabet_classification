@@ -1,25 +1,35 @@
 from typing import Any
 
+import matplotlib.pyplot as plt
 import timm
 import torch
 from pytorch_lightning import LightningModule
 from torch import nn, optim
 from torchvision import transforms
-import matplotlib.pyplot as plt
 
 
 class MyAwesomeModel(LightningModule):
-    def __init__(self, lr:float=1e-2) -> None:
+    def __init__(self, lr: float = 1e-2) -> None:
         super().__init__()
         self.m = timm.create_model("resnet18", pretrained=True, num_classes=29)
         self.lr = lr
         self.data_cfg = timm.data.resolve_data_config(self.m.pretrained_cfg)
-        #self.data_transform = timm.data.create_transform(**self.data_cfg)
-        self.data_transform = transforms.Compose([
-            transforms.Resize(size=256, interpolation=transforms.functional.InterpolationMode.BILINEAR, max_size=None, antialias=None),
-            transforms.CenterCrop(size=(224, 224)),
-            transforms.Normalize(mean=torch.tensor([0.4850, 0.4560, 0.4060]), std=torch.tensor([0.2290, 0.2240, 0.2250]))
-            ])
+        # self.data_transform = timm.data.create_transform(**self.data_cfg)
+        self.data_transform = transforms.Compose(
+            [
+                transforms.Resize(
+                    size=256,
+                    interpolation=transforms.functional.InterpolationMode.BILINEAR,
+                    max_size=None,
+                    antialias=None,
+                ),
+                transforms.CenterCrop(size=(224, 224)),
+                transforms.Normalize(
+                    mean=torch.tensor([0.4850, 0.4560, 0.4060]),
+                    std=torch.tensor([0.2290, 0.2240, 0.2250]),
+                ),
+            ]
+        )
 
         # print(f"Data Transform: {self.data_transform}")
 
