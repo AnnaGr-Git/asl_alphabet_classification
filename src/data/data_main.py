@@ -1,10 +1,14 @@
 from pathlib import Path
+
 import matplotlib.pyplot as plt
-from torch.utils.data import random_split
-from src.data.make_dataset import ASLDataset
 import torch
+from torch.utils.data import random_split
+
+from src.data.make_dataset import ASLDataset
+
 
 def main() -> None:
+    """Testing dataset generation"""
     onehotencoded = True
     train_test_split = 0.8
 
@@ -33,8 +37,8 @@ def main() -> None:
     print(type(val_set))
 
     # Show image in plot
-    img,label = train_set[8]
-    img = torch.swapaxes(img,2,0)
+    img, label = train_set[8]
+    img = torch.swapaxes(img, 2, 0)
     plt.imshow(img)
     plt.show()
 
