@@ -1,0 +1,29 @@
+name: "Run tests"
+
+on:
+  push:
+    branches: [ master, main, make_data]
+  pull_request:
+    branches: [ master, main, make_data]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements_tests.txt
+    - name: Test with pytest
+      run: |
+        pip install pytest
+        pytest -v

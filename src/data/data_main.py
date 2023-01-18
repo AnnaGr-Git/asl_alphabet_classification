@@ -1,7 +1,6 @@
 from pathlib import Path
 
 from torch.utils.data import random_split
-
 from src.data.make_dataset import ASLDataset
 
 
