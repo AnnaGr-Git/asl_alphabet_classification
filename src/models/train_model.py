@@ -29,13 +29,14 @@ def main(config: Any) -> None:
     print(f"configuration: \n {OmegaConf.to_yaml(config)}")
     # Model and training parameter (TODO: Change for hydra stuff)
     hparams = config.experiment
+    config_dict = dict(hparams)
 
     # Check gpu availability
     device = "gpu" if torch.cuda.is_available() else "cpu"
 
     # Creating wandb logger
     wandb_proj_name = "asl_alphabet_classification"
-    wandb.init(project=wandb_proj_name, entity="mlops_awesome_37", config=hparams)
+    wandb.init(project=wandb_proj_name, entity="mlops_awesome_37", config=config_dict)
 
     model = MyAwesomeModel(lr=hparams["learning_rate"])  # this is our LightningModule
     wandb.watch(model, log_freq=10)  # Logging model
