@@ -17,7 +17,7 @@ from torchvision import transforms
 
 class ASLDataset(Dataset):
     """
-    A class to load the MNIST dataset
+    A class to load the ASL dataset
 
     Attributes
     ----------
@@ -54,12 +54,15 @@ class ASLDataset(Dataset):
         self.labels, self.classes = self.load_labels(onehotencoded)
 
     def __len__(self) -> int:
+        """Return len of dataset"""
         return self.imgs.shape[0]
 
     def load_images(self) -> torch.Tensor:
+        """Lead images into memory"""
         return torch.load(os.path.join(self.root_dir, self.img_file))
 
     def load_labels(self, onehotencoded: bool) -> typing.Tuple[torch.Tensor, dict]:
+        """Load labels into memory as ints or onehotencodings"""
         labels = np.load(os.path.join(self.root_dir, self.label_file))
 
         classes = np.unique(labels)
@@ -80,11 +83,13 @@ class ASLDataset(Dataset):
         return encoded, class_dict
 
     def __getitem__(self, idx: int) -> tuple[torch.Tensor, float]:
+        """Get next item in the dataset"""
         return (self.imgs[idx].float(), self.labels[idx].float())
 
 
 @click.group()
 def cli() -> None:
+    """cli command"""
     pass
 
 
@@ -145,7 +150,7 @@ def preprocess(
             # mean, std = img_t.mean([1, 2]), img_t.std([1, 2])
             # transform_norm = transforms.Normalize(mean, std)
             # img_n = transform_norm(img_t)
-            
+
             img_n = img_n.unsqueeze(0)
 
             # Add to images tensor
@@ -186,7 +191,7 @@ def preprocess(
         # mean, std = img_t.mean([1, 2]), img_t.std([1, 2])
         # transform_norm = transforms.Normalize(mean, std)
         # img_n = transform_norm(img_t)
-        
+
         img_n = img_n.unsqueeze(0)
 
         # Add to images tensor
@@ -235,6 +240,9 @@ def preprocess_command(
     output_filepath: str,
     interim_filepath: str,
 ) -> None:
+    """Run data preprocessing.
+    run --help for help
+    """
     preprocess(num_samples, img_size, input_filepath, output_filepath, interim_filepath)
 
 
