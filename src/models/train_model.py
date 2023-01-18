@@ -7,7 +7,7 @@ from src.data.make_dataset import ASLDataset
 from src.models.model import MyAwesomeModel
 from pathlib import Path
 
-root_path = Path(".").absolute()#.parent.absolute()
+root_path = Path(".").absolute()
 print(f"Root Path outside: {root_path}")
 
 
