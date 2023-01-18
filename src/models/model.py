@@ -89,9 +89,9 @@ class MyAwesomeModel(LightningModule):
         outputs = torch.cat([tmp["preds"] for tmp in outs])
         labels = torch.cat([tmp["target"] for tmp in outs])
 
-        confusion = torchmetrics.ConfusionMatrix(
-            task="multiclass", num_classes=self.num_classes
-        ).to(outputs.get_device())
+        confusion = torchmetrics.ConfusionMatrix(task="multiclass", num_classes=self.num_classes)
+        if outputs.get_device() >= 0:
+            confusion = confusion.to(outputs.get_device())
         confusion(outputs.argmax(dim=-1), labels.argmax(dim=-1))
         computed_confusion = confusion.compute().detach().cpu().numpy().astype(int)
 
