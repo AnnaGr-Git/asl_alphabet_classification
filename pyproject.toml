@@ -29,3 +29,4 @@ color = true
 omit-covered-files = false
 generate-badge = "reports/."
 badge-format = "svg"
+fail-under = 80
