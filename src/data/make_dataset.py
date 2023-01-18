@@ -218,7 +218,7 @@ def preprocess(
 @click.option("--num_samples", default=5, help="Number of training samples per class")
 @click.option(
     "--img_size",
-    default=192,
+    default=200,
     help="Size that image should be resized to. For no resizing, pass None.",
 )
 @click.option("--input_filepath", default="data/raw", help="Filepath where raw data is located.")

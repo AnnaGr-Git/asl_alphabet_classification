@@ -49,6 +49,17 @@ class MyAwesomeModel(LightningModule):
         self.log("training_acc", acc)
         return loss
 
+    def validation_step(self, batch: tuple[torch.Tensor, torch.Tensor], batch_idx: int) -> float:
+        data, target = batch
+        preds = self.forward(data)
+        loss = self.criterium(preds, target)
+        # on_epoch=True by default in `validation_step`,
+        # so it is not necessary to specify
+        acc = (target.argmax(dim=-1) == preds.argmax(dim=-1)).float().mean()
+        self.log("val_loss", loss, on_epoch=True)
+        self.log("val_acc", acc)
+        return loss
+
     def configure_optimizers(self) -> Any:
         return optim.Adam(self.parameters(), lr=self.lr)
 
