@@ -137,12 +137,13 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
                 img = img.resize((img_size, img_size))
 
             # Convert PIL img to tensor
-            img_t = convert_tensor(img)
+            img_n = convert_tensor(img)
 
             # Normalize image
-            mean, std = img_t.mean([1, 2]), img_t.std([1, 2])
-            transform_norm = transforms.Normalize(mean, std)
-            img_n = transform_norm(img_t)
+            # mean, std = img_t.mean([1, 2]), img_t.std([1, 2])
+            # transform_norm = transforms.Normalize(mean, std)
+            # img_n = transform_norm(img_t)
+            
             img_n = img_n.unsqueeze(0)
 
             # Add to images tensor
@@ -177,12 +178,13 @@ def preprocess(num_samples:int, img_size:int, input_filepath:str, output_filepat
             img = img.resize((img_size, img_size))
 
         # Convert PIL img to tensor
-        img_t = convert_tensor(img)
+        img_n = convert_tensor(img)
 
         # Normalize image
-        mean, std = img_t.mean([1, 2]), img_t.std([1, 2])
-        transform_norm = transforms.Normalize(mean, std)
-        img_n = transform_norm(img_t)
+        # mean, std = img_t.mean([1, 2]), img_t.std([1, 2])
+        # transform_norm = transforms.Normalize(mean, std)
+        # img_n = transform_norm(img_t)
+        
         img_n = img_n.unsqueeze(0)
 
         # Add to images tensor

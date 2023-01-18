@@ -1,8 +1,8 @@
 from pathlib import Path
-
+import matplotlib.pyplot as plt
 from torch.utils.data import random_split
 from src.data.make_dataset import ASLDataset
-
+import torch
 
 def main() -> None:
     onehotencoded = True
@@ -14,23 +14,29 @@ def main() -> None:
     train_set = ASLDataset(
         data_folder=root_path / "data/processed", train=True, onehotencoded=onehotencoded
     )
-    print(train_set.classes)
-    print(train_set.imgs.shape)
-    print(train_set.labels.shape)
+    print(f"Classes: {train_set.classes}")
+    print(f"Train images shape: {train_set.imgs.shape}")
+    print(f"Train labels shape: {train_set.labels.shape}")
 
     test_set = ASLDataset(
         data_folder=root_path / "data/processed", train=False, onehotencoded=onehotencoded
     )
-    print(test_set.imgs.shape)
+    print(f"Test images shape: {test_set.imgs.shape}")
 
     # Split dataset in train and validation set
     train_set_size = int(len(train_set) * train_test_split)
     valid_set_size = len(train_set) - train_set_size
 
-    print(train_set_size)
-    print(valid_set_size)
+    print(f"Train set size: {train_set_size}")
+    print(f"Valid test size: {valid_set_size}")
     train_set, val_set = random_split(train_set, [train_set_size, valid_set_size])
     print(type(val_set))
+
+    # Show image in plot
+    img,label = train_set[8]
+    img = torch.swapaxes(img,2,0)
+    plt.imshow(img)
+    plt.show()
 
 
 if __name__ == "__main__":
