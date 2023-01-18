@@ -1,5 +1,10 @@
 ASL Alphabet Classification
 ==============================
+![example workflow](https://github.com/AnnaGr-Git/asl_alphabet_classification/actions/workflows/tests.yml/badge.svg)
+<br/>
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white)
 
 In this project, we will classify images of ASL-hand-signs into the corresponding letters.
 
