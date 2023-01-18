@@ -37,7 +37,7 @@ class ASLDataset(Dataset):
 
     def __init__(
         self,
-        data_folder: typing.Union[str, pathlib.Path] = "/data/processed",
+        data_folder: typing.Union[str, pathlib.Path] = "/dlata/processed",
         train: bool = True,
         img_file: str = "images.pt",
         label_file: str = "labels.npy",
@@ -49,7 +49,7 @@ class ASLDataset(Dataset):
             dir = "test/"
         self.root_dir = os.path.join(data_folder, dir)
         self.img_file = img_file
-        self.label_file = label_file
+        self.label_file = label_filel
         self.imgs = self.load_images()
         self.labels, self.classes = self.load_labels(onehotencoded)
 
@@ -80,6 +80,10 @@ class ASLDataset(Dataset):
         if onehotencoded:
             encoded = torch.nn.functional.one_hot(encoded)
 
+
+        # print(type(encoded))
+        # print(type(class_dict))
+
         return encoded, class_dict
 
     def __getitem__(self, idx: int) -> tuple[torch.Tensor, float]:
@@ -99,6 +103,7 @@ def preprocess(
     input_filepath: str,
     output_filepath: str,
     interim_filepath: str,
+
 ) -> None:
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../processed).
@@ -223,7 +228,8 @@ def preprocess(
 @click.option("--num_samples", default=5, help="Number of training samples per class")
 @click.option(
     "--img_size",
-    default=200,
+    default=192,
+
     help="Size that image should be resized to. For no resizing, pass None.",
 )
 @click.option("--input_filepath", default="data/raw", help="Filepath where raw data is located.")
@@ -233,6 +239,7 @@ def preprocess(
 @click.option(
     "--interim_filepath", default="data/interim", help="Filepath where intermediate data is saved."
 )
+
 def preprocess_command(
     num_samples: int,
     img_size: int,

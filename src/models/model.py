@@ -2,8 +2,7 @@ import io
 from typing import Any
 
 import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sn
+
 import timm
 import torch
 import torchmetrics
@@ -15,7 +14,9 @@ from torchvision import transforms
 
 class MyAwesomeModel(LightningModule):
     def __init__(self, lr: float = 1e-2) -> None:
+
         """Model for ASL classification"""
+
         super().__init__()
         self.num_classes = 29
         self.m = timm.create_model("resnet18", pretrained=True, num_classes=self.num_classes)
@@ -39,7 +40,7 @@ class MyAwesomeModel(LightningModule):
             ]
         )
 
-        print(f"Data Transform: {self.data_transform}")
+        # print(f"Data Transform: {self.data_transform}")
 
         # freeze all layers except last
         for name, param in self.m.named_parameters():
@@ -145,7 +146,7 @@ if __name__ == "__main__":
     with torch.no_grad():
         out = m(dummy_data)
 
-    print(out.shape)
+    # print(out.shape)
     probabilities = torch.nn.functional.softmax(out[0], dim=0)
 
     print(probabilities.shape)
