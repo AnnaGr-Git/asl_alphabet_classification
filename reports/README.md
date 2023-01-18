@@ -62,11 +62,11 @@ end of the project.
 * [x] Setup version control for your data or part of your data
 * [x] Construct one or multiple docker files for your code
 * [x] Build the docker files locally and make sure they work as intended
-* [ ] Write one or multiple configurations files for your experiments
-* [ ] Used Hydra to load the configurations and manage your hyperparameters
+* [x] Write one or multiple configurations files for your experiments
+* [x] Used Hydra to load the configurations and manage your hyperparameters
 * [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
-* [ ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
+* [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
 * [x] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
@@ -105,7 +105,7 @@ end of the project.
 >
 > Answer:
 
-37
+--- 37 ---
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +116,7 @@ end of the project.
 >
 > Answer:
 
---- question 2 fill here ---
+--- s213637, s212599, s220285, s220279 ---
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -129,7 +129,7 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
+--- We used the PyTorch Image Models (TIMM) framework. ---
 
 ## Coding environment
 
@@ -148,7 +148,11 @@ end of the project.
 >
 > Answer:
 
---- question 4 fill here ---
+--- We used anaconda to manage our environments. We created a virtual environment where we installed our required packages with pip install.
+In order for all team members to use the same environment, we created an environment.yaml file. As not all required dependencies were included with the normal command conda env export and some issues were faced between different operating systems, we used a script called conda_env_export.py to save the environment correctly. To keep track of all the required packages of the project, we created a requirements.txt file. This file is created using pipreqs. If a new user wants to use our project code, the repository should be cloned and an anaconda environment should be created and activated with: conda env create -f environment.yml
+conda activate MLOPS_project
+After that, all packages need to be installed with the command: pip install -r requirements.txt
+Then, everything is ready to use.---
 
 ### Question 5
 
