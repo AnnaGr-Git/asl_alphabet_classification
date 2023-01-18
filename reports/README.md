@@ -129,7 +129,9 @@ end of the project.
 >
 > Answer:
 
---- We used the PyTorch Image Models (TIMM) framework. ---
+--- We used the PyTorch Image Models (TIMM) framework. This framewrok contained an implementation of the resnet18 model in pytorch with pretrained weights. To use the model for our application, we used the model with the pretrained wieghts, but cut off the last layer. In it's place we put a fully connected layer with only 29 nodes, as these were the possible outputs we expected from the model. Additionally, to best utilized these pretrained wieght, and speed up training, we froze all the weights and biases except for the newly added fully connected layer. Thus, only the weights were trained during the training process.
+
+Additionally we used the Pytorch Lightning framework to quickly set up our model and the training loop. ---
 
 ## Coding environment
 
@@ -178,7 +180,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 6 fill here ---
+--- There are a number of rules and checks that we added as pre-commit hooks. We have a number of linters, that format the code nicely, such as black, trailing-whitespace, pycln, and isort. After this, we run a few checks, such as mypy, flake8, and interrogate to make sure the code is formatted correctly and also documented. We additionally created a custom hook that auto generates the latest version of the requirements file. These are all important to streamline the process of developing, commiting and getting started with the process. e.g. One doesn't have to pay attention to formatting. ---
 
 ## Version control
 
@@ -221,7 +223,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 9 fill here ---
+--- During the course of the project we created a number of branches. This was espacially useful for parallelizing the implementation of different features. For example, one of us had the task of making the dateset, while another one of us was responsible for the model creation. We strived to keep the master branch clean, and only update it using pull requests, but towards the end we did end up pushing directly to master at times. Overall we all gained a higher proficiency in using version control systems, and towards the end could readily create and merge branches with no hassle. Whenever a feature branch was completed, we used Pull Requests push the changes to the master branch, when this happened the automated github workflows ran to ensure the unittests were all passing. ---
 
 ### Question 10
 
