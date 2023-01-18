@@ -1,6 +1,7 @@
 ASL Alphabet Classification
 ==============================
 ![example workflow](https://github.com/AnnaGr-Git/asl_alphabet_classification/actions/workflows/tests.yml/badge.svg)
+![example workflow](https://raw.githubusercontent.com/AnnaGr-Git/asl_alphabet_classification/951a8b5b36e06165ba561011b855f403bc40ff23/reports/interrogate_badge.svg)
 <br/>
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
