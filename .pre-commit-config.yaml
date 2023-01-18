@@ -1,15 +1,16 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
-repos:
--   repo: local
-    hooks:
-    - id: create-requirements
-      name: create-requirements
-      entry: make requirements_file
-      language: system
-      require_serial: true
-      files: ''
-      always_run: true
+
+# repos:
+# -   repo: local
+#     hooks:
+#     - id: create-requirements
+#       name: create-requirements
+#       entry: make requirements_file
+#       language: system
+#       require_serial: true
+#       files: ''
+#       always_run: true
 
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0

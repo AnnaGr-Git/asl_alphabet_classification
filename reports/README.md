@@ -62,11 +62,11 @@ end of the project.
 * [x] Setup version control for your data or part of your data
 * [x] Construct one or multiple docker files for your code
 * [x] Build the docker files locally and make sure they work as intended
-* [ ] Write one or multiple configurations files for your experiments
-* [ ] Used Hydra to load the configurations and manage your hyperparameters
+* [x] Write one or multiple configurations files for your experiments
+* [x] Used Hydra to load the configurations and manage your hyperparameters
 * [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
-* [ ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
+* [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
 * [x] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
@@ -105,7 +105,7 @@ end of the project.
 >
 > Answer:
 
-37
+--- 37 ---
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +116,7 @@ end of the project.
 >
 > Answer:
 
---- question 2 fill here ---
+--- s213637, s212599, s220285, s220279 ---
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -129,7 +129,9 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
+--- We used the PyTorch Image Models (TIMM) framework. This framewrok contained an implementation of the resnet18 model in pytorch with pretrained weights. To use the model for our application, we used the model with the pretrained wieghts, but cut off the last layer. In it's place we put a fully connected layer with only 29 nodes, as these were the possible outputs we expected from the model. Additionally, to best utilized these pretrained wieght, and speed up training, we froze all the weights and biases except for the newly added fully connected layer. Thus, only the weights were trained during the training process.
+
+Additionally we used the Pytorch Lightning framework to quickly set up our model and the training loop. ---
 
 ## Coding environment
 
@@ -148,7 +150,11 @@ end of the project.
 >
 > Answer:
 
---- question 4 fill here ---
+--- We used anaconda to manage our environments. We created a virtual environment where we installed our required packages with pip install.
+In order for all team members to use the same environment, we created an environment.yaml file. As not all required dependencies were included with the normal command conda env export and some issues were faced between different operating systems, we used a script called conda_env_export.py to save the environment correctly. To keep track of all the required packages of the project, we created a requirements.txt file. This file is created using pipreqs. If a new user wants to use our project code, the repository should be cloned and an anaconda environment should be created and activated with: conda env create -f environment.yml
+conda activate MLOPS_project
+After that, all packages need to be installed with the command: pip install -r requirements.txt
+Then, everything is ready to use.---
 
 ### Question 5
 
@@ -163,7 +169,7 @@ end of the project.
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+--- From the cookiecutter template we have used the src/data folder for all the scripts redarding the creation and processing of the dataset. The folder src/models is used for the definition of our model and the training and predict scripts. The src/features and src/visualization folders are not used since no features of the data are extracted before the training and no extra visualizations functions are created. In data/raw we are storing the raw compressed dataset that can be pulled from dvc. When running the make_dataset.py script, the data is extracted in data/interim and finally processed to torch.tensors, saved in data/processed. The folder data/external is not used. The directory reports is used for the report hand in and for figures. In models, the trained model files are stored. The folders notebooks and references are not used since no belonging files where necessary. We have added...---
 
 ### Question 6
 
@@ -174,7 +180,7 @@ end of the project.
 >
 > Answer:
 
---- question 6 fill here ---
+--- There are a number of rules and checks that we added as pre-commit hooks. We have a number of linters, that format the code nicely, such as black, trailing-whitespace, pycln, and isort. After this, we run a few checks, such as mypy, flake8, and interrogate to make sure the code is formatted correctly and also documented. We additionally created a custom hook that auto generates the latest version of the requirements file. These are all important to streamline the process of developing, commiting and getting started with the process. e.g. One doesn't have to pay attention to formatting. ---
 
 ## Version control
 
@@ -217,7 +223,7 @@ end of the project.
 >
 > Answer:
 
---- question 9 fill here ---
+--- During the course of the project we created a number of branches. This was espacially useful for parallelizing the implementation of different features. For example, one of us had the task of making the dateset, while another one of us was responsible for the model creation. We strived to keep the master branch clean, and only update it using pull requests, but towards the end we did end up pushing directly to master at times. Overall we all gained a higher proficiency in using version control systems, and towards the end could readily create and merge branches with no hassle. Whenever a feature branch was completed, we used Pull Requests push the changes to the master branch, when this happened the automated github workflows ran to ensure the unittests were all passing. ---
 
 ### Question 10
 

@@ -17,7 +17,7 @@ from torchvision import transforms
 
 class ASLDataset(Dataset):
     """
-    A class to load the MNIST dataset
+    A class to load the ASL dataset
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ class ASLDataset(Dataset):
 
     def __init__(
         self,
-        data_folder: typing.Union[str, pathlib.Path] = "/data/processed",
+        data_folder: typing.Union[str, pathlib.Path] = "/dlata/processed",
         train: bool = True,
         img_file: str = "images.pt",
         label_file: str = "labels.npy",
@@ -49,17 +49,20 @@ class ASLDataset(Dataset):
             dir = "test/"
         self.root_dir = os.path.join(data_folder, dir)
         self.img_file = img_file
-        self.label_file = label_file
+        self.label_file = label_filel
         self.imgs = self.load_images()
         self.labels, self.classes = self.load_labels(onehotencoded)
 
     def __len__(self) -> int:
+        """Return len of dataset"""
         return self.imgs.shape[0]
 
     def load_images(self) -> torch.Tensor:
+        """Lead images into memory"""
         return torch.load(os.path.join(self.root_dir, self.img_file))
 
     def load_labels(self, onehotencoded: bool) -> typing.Tuple[torch.Tensor, dict]:
+        """Load labels into memory as ints or onehotencodings"""
         labels = np.load(os.path.join(self.root_dir, self.label_file))
 
         classes = np.unique(labels)
@@ -77,17 +80,20 @@ class ASLDataset(Dataset):
         if onehotencoded:
             encoded = torch.nn.functional.one_hot(encoded)
 
+
         # print(type(encoded))
         # print(type(class_dict))
 
         return encoded, class_dict
 
     def __getitem__(self, idx: int) -> tuple[torch.Tensor, float]:
+        """Get next item in the dataset"""
         return (self.imgs[idx].float(), self.labels[idx].float())
 
 
 @click.group()
 def cli() -> None:
+    """cli command"""
     pass
 
 
@@ -97,7 +103,8 @@ def preprocess(
     input_filepath: str,
     output_filepath: str,
     interim_filepath: str,
-):
+
+) -> None:
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../processed).
     """
@@ -222,6 +229,7 @@ def preprocess(
 @click.option(
     "--img_size",
     default=192,
+
     help="Size that image should be resized to. For no resizing, pass None.",
 )
 @click.option("--input_filepath", default="data/raw", help="Filepath where raw data is located.")
@@ -231,7 +239,17 @@ def preprocess(
 @click.option(
     "--interim_filepath", default="data/interim", help="Filepath where intermediate data is saved."
 )
-def preprocess_command(num_samples, img_size, input_filepath, output_filepath, interim_filepath):
+
+def preprocess_command(
+    num_samples: int,
+    img_size: int,
+    input_filepath: str,
+    output_filepath: str,
+    interim_filepath: str,
+) -> None:
+    """Run data preprocessing.
+    run --help for help
+    """
     preprocess(num_samples, img_size, input_filepath, output_filepath, interim_filepath)
 
 

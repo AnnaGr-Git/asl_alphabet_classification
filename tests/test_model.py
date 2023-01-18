@@ -1,8 +1,10 @@
 import torch
+
 from src.models.model import MyAwesomeModel
 
+
 def test_model():
-    """ Check if model output has the correct shape """
+    """Check if model output has the correct shape"""
     m = MyAwesomeModel()
 
     dummy_data = torch.rand([64, 3, 128, 128])

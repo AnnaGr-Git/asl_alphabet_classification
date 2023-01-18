@@ -1,5 +1,11 @@
 ASL Alphabet Classification
 ==============================
+![example workflow](https://github.com/AnnaGr-Git/asl_alphabet_classification/actions/workflows/tests.yml/badge.svg)
+![example workflow](https://raw.githubusercontent.com/AnnaGr-Git/asl_alphabet_classification/951a8b5b36e06165ba561011b855f403bc40ff23/reports/interrogate_badge.svg)
+<br/>
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white)
 
 In this project, we will classify images of ASL-hand-signs into the corresponding letters.
 
@@ -23,10 +29,10 @@ Check the [Conda website](https://www.anaconda.com/) for how to install it.
    ```
 3. Install further pre-requisites
    ```sh
-   pip install -f requirements.txt
+   pip install -r requirements.txt
    ```
 
-## Usage
+# Usage
 
 
 ## Fetch dataset
@@ -113,6 +119,14 @@ In case you want to commit without running the pre-commit hooks, do:
 git commit -m <message> --no-verify
 ```
 
+## Logging
+
+We are using [Weights and Biases](https://wandb.ai/) to log the model training.
+
+To authenticate the wandb in a docker container do as the following example:
+```shell
+docker run -e WANDB_API_KEY=<your-api-key> wandb:latest
+```
 
 Project Organization
 ------------
@@ -186,5 +200,3 @@ We plan on utilizing one of the strengths of the Transformers framework which is
 We are using the Kaggle dataset on [ASL alphabet](https://www.kaggle.com/datasets/grassknoted/asl-alphabet). The dataset contains a `train` and a `test` folder. The `test` folder has 1 image for each letter in the alphabet. The training data has 87 thousand images of 200x200 pixels. The dataset is labeled with one of 29 classes, these are the 26 letters of the alphabet, SPACE, DELETE and NOTHING. The images have  some variation, this includes different lighting conditions, hand sizes, distance of hand from camera.
 ### What deep learning models do you expect to use
 We will use a pretrained version of resnet, and finetune it on our data [RESNET](https://huggingface.co/docs/timm/models/resnet). RESNET is a model that learns residual functions with reference to the layer inputs, instead of learning unreferenced functions. Instead of hoping each few stacked layers directly fit a desired underlying mapping, residual nets let these layers fit a residual mapping.
-
-

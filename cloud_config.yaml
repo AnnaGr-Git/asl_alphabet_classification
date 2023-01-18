@@ -4,4 +4,4 @@ workerPoolSpecs:
       machineType: n1-highmem-2
    replicaCount: 1
    containerSpec:
-      imageUri: gcr.io/aslalphabet-374510/trainer:latest
+      imageUri: eu.gcr.io/aslalphabet-374510/trainer:latest
