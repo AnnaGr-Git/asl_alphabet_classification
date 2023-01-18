@@ -1,0 +1,7 @@
+dataset_path: "data/processed"
+cuda: False
+batch_size: 64
+learning_rate: 1e-4
+epochs: 100
+onehotencoded: True
+trainsize: 0.7
