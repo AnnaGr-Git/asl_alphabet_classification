@@ -23,6 +23,7 @@ COPY .dvc/config .dvc/config
 COPY .git .git
 COPY data.dvc data.dvc
 COPY entrypoint.sh entrypoint.sh
+COPY config/ config/
 
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install wandb

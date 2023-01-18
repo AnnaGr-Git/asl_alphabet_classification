@@ -17,3 +17,9 @@ def read_item(item_id: int):
 def train():
     result = subprocess.run(['python', '-u', 'src/models/train_model.py'], check=True, capture_output=True)
     return Response(content=result.stdout, media_type="text/plain")
+
+@app.get("/predict/{i}")
+def predict(i: int):
+    result = subprocess.run(['python', '-u', 'src/models/predict_model.py', str(i)], check=True, capture_output=True)
+    return Response(content=result.stdout, media_type="text/plain")
+    
