@@ -79,8 +79,8 @@ class ASLDataset(Dataset):
         if onehotencoded:
             encoded = torch.nn.functional.one_hot(encoded)
 
-        print(type(encoded))
-        print(type(class_dict))
+        # print(type(encoded))
+        # print(type(class_dict))
 
         return encoded, class_dict
 

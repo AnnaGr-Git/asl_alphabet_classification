@@ -21,7 +21,7 @@ class MyAwesomeModel(LightningModule):
             transforms.Normalize(mean=torch.tensor([0.4850, 0.4560, 0.4060]), std=torch.tensor([0.2290, 0.2240, 0.2250]))
             ])
 
-        print(f"Data Transform: {self.data_transform}")
+        # print(f"Data Transform: {self.data_transform}")
 
         # freeze all layers except last
         for name, param in self.m.named_parameters():
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     with torch.no_grad():
         out = m(dummy_data)
 
-    print(out.shape)
+    # print(out.shape)
     probabilities = torch.nn.functional.softmax(out[0], dim=0)
 
     print(probabilities.shape)
