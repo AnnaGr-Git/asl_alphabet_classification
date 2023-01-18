@@ -28,7 +28,7 @@ Check the [Conda website](https://www.anaconda.com/) for how to install it.
    ```
 3. Install further pre-requisites
    ```sh
-   pip install -f requirements.txt
+   pip install -r requirements.txt
    ```
 
 ## Usage
