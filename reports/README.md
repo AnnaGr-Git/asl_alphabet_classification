@@ -62,11 +62,11 @@ end of the project.
 * [x] Setup version control for your data or part of your data
 * [x] Construct one or multiple docker files for your code
 * [x] Build the docker files locally and make sure they work as intended
-* [ ] Write one or multiple configurations files for your experiments
-* [ ] Used Hydra to load the configurations and manage your hyperparameters
+* [x] Write one or multiple configurations files for your experiments
+* [x] Used Hydra to load the configurations and manage your hyperparameters
 * [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
-* [ ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
+* [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
 * [x] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
@@ -105,7 +105,7 @@ end of the project.
 >
 > Answer:
 
-37
+--- 37 ---
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +116,7 @@ end of the project.
 >
 > Answer:
 
---- question 2 fill here ---
+--- s213637, s212599, s220285, s220279 ---
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -129,7 +129,7 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
+--- We used the PyTorch Image Models (TIMM) framework. ---
 
 ## Coding environment
 
@@ -148,7 +148,8 @@ end of the project.
 >
 > Answer:
 
---- question 4 fill here ---
+--- We used anaconda to manage our environments. We created a virtual environment where we installed our required packages with pip install.
+In order to use the latest version and packages, ---
 
 ### Question 5
 
