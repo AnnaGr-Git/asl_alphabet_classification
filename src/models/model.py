@@ -9,10 +9,10 @@ import matplotlib.pyplot as plt
 
 
 class MyAwesomeModel(LightningModule):
-    def __init__(self) -> None:
+    def __init__(self, lr:float=1e-2) -> None:
         super().__init__()
         self.m = timm.create_model("resnet18", pretrained=True, num_classes=29)
-
+        self.lr = lr
         self.data_cfg = timm.data.resolve_data_config(self.m.pretrained_cfg)
         #self.data_transform = timm.data.create_transform(**self.data_cfg)
         self.data_transform = transforms.Compose([
@@ -46,7 +46,7 @@ class MyAwesomeModel(LightningModule):
         return loss
 
     def configure_optimizers(self) -> Any:
-        return optim.Adam(self.parameters(), lr=1e-2)
+        return optim.Adam(self.parameters(), lr=self.lr)
 
 
 if __name__ == "__main__":
