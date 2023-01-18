@@ -1,4 +1,4 @@
 #!/bin/sh
 dvc pull
 python -u src/data/make_dataset.py preprocess-command --num_samples=10
-python -u src/models/train_model.py 
+python -u src/models/train_model.py
