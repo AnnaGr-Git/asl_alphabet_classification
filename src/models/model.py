@@ -14,7 +14,7 @@ from torchvision import transforms
 
 
 class MyAwesomeModel(LightningModule):
-    def __init__(self, lr:float=1e-2) -> None:
+    def __init__(self, lr: float = 1e-2) -> None:
         """Model for ASL classification"""
         super().__init__()
         self.num_classes = 29
@@ -119,8 +119,10 @@ class MyAwesomeModel(LightningModule):
         im = Image.open(buf)
         im = transforms.ToTensor()(im)
         self.logger.log_image(key="val_confusion_matrix", images=[im])
+        plt.clf()
 
     def configure_optimizers(self) -> Any:
+        """Configure optimizer"""
         return optim.Adam(self.parameters(), lr=self.lr)
 
 
@@ -128,7 +130,7 @@ class IntHandler:
     """Helper class to build the confusion matrix"""
 
     def legend_artist(self, legend: str, orig_handle: Any, fontsize: int, handlebox: Any) -> str:
-        # Helper function for building the confusion matrix
+        """Helper function for building the confusion matrix"""
         x0, y0 = handlebox.xdescent, handlebox.ydescent
         text = plt.matplotlib.text.Text(x0, y0, str(orig_handle))
         handlebox.add_artist(text)
