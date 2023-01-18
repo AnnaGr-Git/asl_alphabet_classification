@@ -46,8 +46,19 @@ python src/data/make_dataset.py preprocess
 ```
 
 ## Train and Evaluate
+Default training (config/experiment/exp1.yaml will be used):
+```shell
+python src/models/train_model.py
+```
+Run a training with hyperparameters defined in config/experiment/exp2.yaml
+```shell
+python src/models/train_model.py experiment=exp2
+```
+Change parameters (e.g. trainsize) of config in command-line:
+```shell
+python src/models/train_model.py experiment=exp2 experiment.trainsize=0.8
+```
 
-TODO: run how to train and evaluate
 
 ### Parameters
 
