@@ -193,7 +193,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 7 fill here ---
+--- We implemented a test to check if the make_dataset.py file creates data of the correct shape. Also, we implemented a test of the model.py to check the output of the model after passing dummy data. ---
 
 ### Question 8
 
@@ -208,7 +208,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 8 fill here ---
+--- The total coverage of our code is 44%, which includes.... This and that is missing.... ---
 
 ### Question 9
 
@@ -238,7 +238,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 10 fill here ---
+--- We used DVC to store and version control our data. In that way, everyone from the team can push and pull the data with dvc from the Google S3 bucket and access it. Since the data.dvc file is pushed to the project's github and tagged with the data version, we can access the data from older versions. In case accidentaly data gets lost or data is updated, the old files can be restored. At the same time, it is useful that the data is stored in a compressed way in our google cloud bucket instead of pushing big data files to the github repository. ---
 
 ### Question 11
 
