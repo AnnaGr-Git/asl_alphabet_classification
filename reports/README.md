@@ -167,7 +167,7 @@ Then, everything is ready to use.---
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+--- From the cookiecutter template we have used the src/data folder for all the scripts redarding the creation and processing of the dataset. The folder src/models is used for the definition of our model and the training and predict scripts. The src/features and src/visualization folders are not used since no features of the data are extracted before the training and no extra visualizations functions are created. In data/raw we are storing the raw compressed dataset that can be pulled from dvc. When running the make_dataset.py script, the data is extracted in data/interim and finally processed to torch.tensors, saved in data/processed. The folder data/external is not used. The directory reports is used for the report hand in and for figures. In models, the trained model files are stored. The folders notebooks and references are not used since no belonging files where necessary. We have added...---
 
 ### Question 6
 
