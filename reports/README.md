@@ -208,7 +208,9 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- The total coverage of our code is 44%, which includes.... This and that is missing.... ---
+--- The total coverage of our code is 44%, which includes the tests for the make_data.py and the model.py filese. Although we understand the numerous benefits that test driven development brings to the table, we have not put much towards thorough testing.  This requires a certain time investment that that pays dividends which scale well with longer development times, larger projects, and/or more developers. As we had short timeframe for the project, which itself was quite small, with only four developers, we decided that the costs outweighed the benefits especially considering the numerous other systems we planned on implementing.
+
+Considering our meagre code coverage statistics, we do not expect our code to be error free, and we certainly wouldn't consider this a deployable product. Regardless, the application proved capable enough on the use cases we put it through. ---
 
 ### Question 9
 
