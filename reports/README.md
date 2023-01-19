@@ -208,9 +208,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- The total coverage of our code is 44%, which includes the tests for the make_data.py and the model.py filese. Although we understand the numerous benefits that test driven development brings to the table, we have not put much towards thorough testing.  This requires a certain time investment that that pays dividends which scale well with longer development times, larger projects, and/or more developers. As we had short timeframe for the project, which itself was quite small, with only four developers, we decided that the costs outweighed the benefits especially considering the numerous other systems we planned on implementing.
-
-Considering our meagre code coverage statistics, we do not expect our code to be error free, and we certainly wouldn't consider this a deployable product. Regardless, the application proved capable enough on the use cases we put it through. ---
+--- The total coverage of our code is 44%, which includes.... This and that is missing.... ---
 
 ### Question 9
 
@@ -469,9 +467,11 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 > *Whenever we commit code and puch to github, it auto triggers ... and ... . From there the diagram shows ...*
 >
 > Answer:
+--- 
 ![Alt text](figures/overview_mlops.png?raw=true "Flowchart")
---- question 25 fill here ---
 
+--- The starting point of our diagram is our local setup. Each developer can clone the github project and work on their local machine. For a clear organization of our project, we used the cookie cutter for data science template. In order to run the code and have the same setup on every machine, the packages and python requirements are organized with an anaconda environment. In order to simplify the code and avoid boilerplating, we use the pytorch lightning library. For reproducability, the hyperparameters of every training should be logged. For that reason, hydra is used to read and pass the config-files of different experiments where configuration can be specified or overridden from the command line. In order to log and visualize the training experiments, we used "Weights&Biases" where every team member has access to the shared project. In order to version control the data without pushing everyting to the github repository, dvc is used with the Google Cloud storage. Each version of the data can be pushed and pulled with DVC. For a continuous integration, we added pre-commit hooks where the format of the code is checked and corrected using flake8 and black among others before being committed and pushed to the github repository. Additionally, pytest test functions were created where the code functions are checked for its correctness. Github actions runs this pytests automatically, as soon as there are push or pull requests on the main branch.
+Docker images are used to ensure that the project can be run from anywhere, also from the cloud without having the same hardware settings. We create 2 images of our project. One contains all requirements and code for training the model and one image for deploying the model. A cloud build trigger ensures that everytime a new update is pushed to the main branch in github, the two docker images are newly created and saved in the Google Container Registry to guarantee the most recent version. In order to train our model, we use the Google Vertex AI. In order to provide the functionality of our model to any user, we use Cloud Run and FastApI where our model is deployed in the cloud where the user can insert a picture to be classified by the model. ---
 ### Question 26
 
 > **Discuss the overall struggles of the project. Where did you spend most time and what did you do to overcome these**
