@@ -89,6 +89,5 @@ def main(config: Any) -> None:
 
     # torch.save(model.state_dict(), 'models/latest/model.pt')
 
-
 if __name__ == "__main__":
     main()
