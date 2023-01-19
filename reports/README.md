@@ -339,7 +339,9 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 16 fill here ---
+--- Debugging varied from group member to group member, and the file in which the problem occured. For python files we mainly relied on the python interpreters verbose error logging. If this wasn't enough we used a compination of debugging as well as the python REPL to gain an understanding of what went wrong. Although when we used click, the debugger wasn't a big help, so we resorted to using the good old method of writing print() statements. Throughout the course of the project we developed better understanding of the python debugger and increased our reliance on it as the days progressed. 
+
+We didn't do much in terms of profiling, any implemented speed impovements were the result of obviously not performant code. As at this stage the project is in what would be considered the MVP stage, we didn't place much value in optimizing the code. ---
 
 ## Working in the cloud
 
@@ -386,7 +388,9 @@ Then, everything is ready to use.---
 
 > **Upload one image of your GCP container registry, such that we can see the different images that you have stored.**
 > **You can take inspiration from [this figure](figures/registry.png).**
->
+>Debugging varied from group member to group member, and the file in which the problem occured. For python files we mainly relied on the python interpreters verbose error logging. If this wasn't enough we used a compination of debugging as well as the python REPL to gain an understanding of what went wrong. Although when we used click, the debugger wasn't a big help, so we resorted to using the good old method of writing print() statements. Throughout the course of the project we developed better understanding of the python debugger and increased our reliance on it as the days progressed. 
+
+We didn't do much in terms of profiling, any implemented speed impovements were the result of obviously not performant code. As at this stage the project is in what would be considered the MVP stage, we didn't place much value in optimizing the code.
 > Answer:
 
 --- question 20 fill here ---
