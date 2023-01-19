@@ -288,7 +288,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 13 fill here ---
+--- As mentioned in the previous questions, we made use of config files using the hydra framework and saved the configurations using the weights and bias framework. So, whenever an experiment is run the following happens: the experiment reads the configuration from the configuration file, then the configuration is saved in wandb, where it can be viewed together with the experiment's results. To reproduce an experiment one would have to check the wandb experiment and use the same configurations in the config file. Additionally, during the start of the training, we set the torch seed to zero, so all the random initializations have the same start and the experiment can be reproducible. ---
 
 ### Question 14
 
@@ -305,8 +305,10 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- As seen in the first image, we have tracked the validation and training loss as weel as the training and validation accuracy.   ---
-      
+--- As seen in the first image, we have tracked the validation and training loss as well as the training and validation accuracy. which informs us about how the training of the model is progressing, by showing how the difference between the model's predicted values and the ground truth, which we get with the loss function, decreases along the training. The same can be said about the accuracy, which we check in the training set, where we see that the model is learning from the dataset it is being trained on, but also on the validation set, where we can see how accurate the model is in data that it has not seen during training.
+
+As seen in the second image we are also tracking the confusion matrix in the validation set at the end of each epoch which is a better visualization of how the model is making predictions and comparing it with the true label of the input. So we can see, in each of the experiments, how the confusion matrix changed in every epoch during the training. The matrix can show us which labels have higher or lower accuracy, and also which labels the model gets more "confused" about. ---
+
 <img width="1440" alt="Screenshot 2023-01-19 at 10 55 17" src="https://user-images.githubusercontent.com/75242605/213412289-138d4d5e-6a4f-4d03-b9d0-3d46163e8c75.png">
 <img width="1105" alt="Screenshot 2023-01-19 at 10 58 21" src="https://user-images.githubusercontent.com/75242605/213412594-699b77eb-9ad5-4cd9-b887-4fac25c7d642.png">
 
@@ -339,7 +341,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- Debugging varied from group member to group member, and the file in which the problem occured. For python files we mainly relied on the python interpreters verbose error logging. If this wasn't enough we used a compination of debugging as well as the python REPL to gain an understanding of what went wrong. Although when we used click, the debugger wasn't a big help, so we resorted to using the good old method of writing print() statements. Throughout the course of the project we developed better understanding of the python debugger and increased our reliance on it as the days progressed. 
+--- Debugging varied from group member to group member, and the file in which the problem occured. For python files we mainly relied on the python interpreters verbose error logging. If this wasn't enough we used a compination of debugging as well as the python REPL to gain an understanding of what went wrong. Although when we used click, the debugger wasn't a big help, so we resorted to using the good old method of writing print() statements. Throughout the course of the project we developed better understanding of the python debugger and increased our reliance on it as the days progressed.
 
 We didn't do much in terms of profiling, any implemented speed impovements were the result of obviously not performant code. As at this stage the project is in what would be considered the MVP stage, we didn't place much value in optimizing the code. ---
 
@@ -389,6 +391,9 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 > **Upload one image of your GCP container registry, such that we can see the different images that you have stored.**
 > **You can take inspiration from [this figure](figures/registry.png).**
 >
+>Debugging varied from group member to group member, and the file in which the problem occured. For python files we mainly relied on the python interpreters verbose error logging. If this wasn't enough we used a compination of debugging as well as the python REPL to gain an understanding of what went wrong. Although when we used click, the debugger wasn't a big help, so we resorted to using the good old method of writing print() statements. Throughout the course of the project we developed better understanding of the python debugger and increased our reliance on it as the days progressed.
+
+We didn't do much in terms of profiling, any implemented speed impovements were the result of obviously not performant code. As at this stage the project is in what would be considered the MVP stage, we didn't place much value in optimizing the code.
 > Answer:
 
 --- ![image](https://user-images.githubusercontent.com/75242605/213458122-757a7d6b-52a8-429d-8105-60d2516a0403.png) ---
