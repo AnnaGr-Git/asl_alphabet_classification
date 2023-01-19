@@ -1,5 +1,6 @@
 import subprocess
-
+from pathlib import Path
+import os.path
 from fastapi import FastAPI, File, Response, UploadFile
 
 app = FastAPI()
@@ -27,34 +28,22 @@ def train() -> Response:
 
 
 @app.post("/predict")
-# async def predict(data: Union[UploadFile, str] = File(...)):
 async def predict(data: UploadFile = File(...)) -> Response:
     """Function to predict the asl letter given an image"""
+    print("We are in the predict function")
     # Read uploaded file to image
     img_path = "image.jpg"
     with open(img_path, "wb") as image:
         content = await data.read()
+        print("In the with open")
         image.write(content)
         image.close()
+
+    path = Path(img_path)
+    print(path.is_file())
+    print(path.exists())
 
     result = subprocess.run(
         ["python", "-u", "src/models/predict_model.py", img_path], check=True, capture_output=True
     )
     return Response(content=result.stdout, media_type="text/plain")
-
-
-# async def predict(data: str):
-#     # Read uploaded file to image
-#     if type(data) == UploadFile:
-#         img_path = 'image.jpg'
-#         with open(img_path, 'wb') as image:
-#             content = await data.read()
-#             image.write(content)
-#             image.close()
-#     else:
-#         img_path = data
-
-#     #img = Image.open("image.jpg")
-#     result = subprocess.run(['python', '-u', 'src/models/predict_model.py', img_path],
-#                               check=True, capture_output=True)
-#     return Response(content=result.stdout, media_type="text/plain")
