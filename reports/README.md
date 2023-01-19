@@ -375,7 +375,7 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 >
 > Answer:
 
---- question 18 fill here ---
+--- We did not use VM instances by themselves, however, we used Vertex AI which has a Compute Engine VM as the underlying infrastructure. There we used just a CPU VM to save costs while testing. Also, building the images in GCP works based on a VM. We also used a Linux CPU VM. We used a 4 CPU 16GB virtual machine to deploy the model. ---
 
 ### Question 19
 
