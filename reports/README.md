@@ -400,7 +400,7 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 >
 > Answer:
 
---- question 21 fill here ---
+--- ![image](https://user-images.githubusercontent.com/75242605/213458561-e2b13504-c08a-40f8-bd7c-e802cd1a3573.png) ---
 
 ### Question 22
 
