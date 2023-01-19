@@ -2,7 +2,6 @@ FROM python:3.10-slim
 
 EXPOSE $PORT
 
-#RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 WORKDIR /root
 
@@ -32,5 +31,5 @@ RUN pip install uvicorn
 RUN pip install -e .
 
 #CMD exec uvicorn src/app/deploy_app:app --port $PORT --host 0.0.0.0 --workers 1
-CMD exec uvicorn deploy_app:app --port $PORT --host 0.0.0.0 --workers 1
+CMD exec uvicorn src.app.deploy_app:app --port $PORT --host 0.0.0.0 --workers 1
 
