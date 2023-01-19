@@ -3,9 +3,6 @@ Export a Conda environment with --from-history, but also append
 Pip-installed dependencies
 Exports only manually-installed dependencies, excluding build versions, but
 including Pip-installed dependencies.
-Lots of issues requesting this functionality in the Conda issue tracker, no
-sign of progress (as of March 2020).
-TODO (?): support command-line flags -n and -p
 """
 import re
 import subprocess

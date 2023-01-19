@@ -9,7 +9,6 @@ RUN apt update && \
 # git is needed to run DVC as we use git for version control
 RUN apt-get update && apt-get install -y git
 
-#RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 WORKDIR /root
 
