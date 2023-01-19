@@ -273,7 +273,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 12 fill here ---
+--- We used hydra to organize our training configurations. For each configuration, we created a exp.yaml file where the hyperparameters are stored. These parameters are passed to the training script with hydra through the default_config.yaml. In this file, the chosen experiment configuration is defined, where exp1 is default. If the user wants to choose another configuration, it can be passed using the agparser in the command line: python src/models/train_model.py experiment=exp2 ---
 
 ### Question 13
 
