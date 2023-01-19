@@ -423,7 +423,7 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -F 'data=@A_test.jpg;type=image/jpeg' ```
-with its own configured path to the image, or type ```https://gcp-api-test-kge344k7fa-ew.a.run.app/docs in the browser and upload the image. The service runs on 8 GB memory on 4 CPUs. ``` ---
+with its own configured path to the image, or type ```https://gcp-api-test-kge344k7fa-ew.a.run.app/docs``` in the browser and upload the image. The service runs on 8 GB memory on 4 CPUs.  ---
 
 ### Question 23
 
