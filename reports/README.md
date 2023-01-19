@@ -307,11 +307,10 @@ Then, everything is ready to use.---
 
 --- As seen in the first image, we have tracked the validation and training loss as well as the training and validation accuracy. which informs us about how the training of the model is progressing, by showing how the difference between the model's predicted values and the ground truth, which we get with the loss function, decreases along the training. The same can be said about the accuracy, which we check in the training set, where we see that the model is learning from the dataset it is being trained on, but also on the validation set, where we can see how accurate the model is in data that it has not seen during training.
 
-As seen in the second image we are also tracking the confusion matrix in the validation set at the end of each epoch which is a better visualization of how the model is making predictions and comparing it with the true label of the input. So we can see, in each of the experiments, how the confusion matrix changed in every epoch during the training. The matrix can show us which labels have higher or lower accuracy, and also which labels the model gets more "confused" about. ---
+As seen in the second image we are also tracking the confusion matrix in the validation set at the end of each epoch which is a better visualization of how the model is making predictions and comparing it with the true label of the input. So we can see, in each of the experiments, how the confusion matrix changed in every epoch during the training. The matrix can show us which labels have higher or lower accuracy, and also which labels the model gets more "confused" about.
 
 <img width="1440" alt="Screenshot 2023-01-19 at 10 55 17" src="https://user-images.githubusercontent.com/75242605/213412289-138d4d5e-6a4f-4d03-b9d0-3d46163e8c75.png">
-<img width="1105" alt="Screenshot 2023-01-19 at 10 58 21" src="https://user-images.githubusercontent.com/75242605/213412594-699b77eb-9ad5-4cd9-b887-4fac25c7d642.png">
-
+<img width="1105" alt="Screenshot 2023-01-19 at 10 58 21" src="https://user-images.githubusercontent.com/75242605/213412594-699b77eb-9ad5-4cd9-b887-4fac25c7d642.png"> ---
 
 ### Question 15
 
@@ -448,7 +447,7 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 >
 > Answer:
 
---- question 24 fill here ---
+--- During the development of the project, as of January 19, only 3 dollars were spent in total. The service that cost the most was the Cloud storage, with $2.58 being spent, followed by $0.26 with Vertex AI, $0.11 in Cloud run, and $0.05 with the Cloud Machine Learning  Engine and Cloud build combined. ---
 
 ## Overall discussion of project
 
@@ -487,7 +486,7 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 
 On the more technical side, integrating all the component systems into one cohesive product was a complicated enngagement, but fun nonetheless. Individually, each module was a small challenge in itself to sufficiently find our way around it, but that challenge grew exponentially when we attempted to integrate them all with each other. We found that the group aspect of this ocurse was one of the best yet. We absolutely felt like a team in a company, with each of us responsible for a different aspect of the product. Due to this, we could overcome the challenge of integrating the different parts with each other.
 
-Speaking of the group aspect, although we felt that on the technical side we could solve anything, we lacked the proper managment structures to extract the most potential. While we have al used them, none of us took it upon ourselves to create a kanban board for tracking tasks, and at time we didn't utilize git branches to their full potential, often commiting directly to master. 
+Speaking of the group aspect, although we felt that on the technical side we could solve anything, we lacked the proper managment structures to extract the most potential. While we have al used them, none of us took it upon ourselves to create a kanban board for tracking tasks, and at time we didn't utilize git branches to their full potential, often commiting directly to master.
 
 And last but not least, one member of our group overcame great emotional struggle when he got stuck in the elavator of building 310. ---
 
