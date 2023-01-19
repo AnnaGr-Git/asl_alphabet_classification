@@ -356,7 +356,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 17 fill here ---
+--- We used the following GCP services: Cloud Storage (Buckets), Container Registry, Vertex AI, Cloud Build and Cloud Run. We have three buckets: one to storaé the data that gets accessed by dvc, one for storing the docker images, and one for saving the model files. In the container registry, we have access to the train images and the fastapi images. Vertex AI is used to train models in the cloud as described in the readme of the repository. This accesses the train image stored in the Cloud Storage. Cloud Build is used to create a new docker image and save it to the cloud storage every time someone pushes code to the main branch. The trigger is directly connected to the github repository. Cloud Run is used to create a service that builds a docker container based on the FastAPI docker file in the repository, which allows the end user to access the API through simple http or curl commands. ---
 
 ### Question 18
 
