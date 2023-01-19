@@ -75,8 +75,8 @@ def main(config: Any) -> None:
 
     trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
 
+    #torch.save(model.state_dict(), 'gs://aslalphabet-374510/models-output-gcp/test.pth')
     torch.save(model.state_dict(), 'gs://aslalphabet-374510/models-output-gcp/test.pth')
-
 
 if __name__ == "__main__":
     main()
