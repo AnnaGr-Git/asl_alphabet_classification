@@ -101,7 +101,7 @@ python src/models/train_model.py experiment=exp2 experiment.trainsize=0.8
 ### Deploying the model locally (with FastAI):
 Run in command-line:
 ```shell
-uvicorn --reload --port 8000 app:app
+uvicorn --reload --port 8000 src.app.deploy_app:app
 ```
 Either use the predict functionality in http://127.0.0.1:8000/docs to insert an image-file
 or
