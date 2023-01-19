@@ -306,6 +306,10 @@ Then, everything is ready to use.---
 > Answer:
 
 --- question 14 fill here ---
+      
+<img width="1440" alt="Screenshot 2023-01-19 at 10 55 17" src="https://user-images.githubusercontent.com/75242605/213412289-138d4d5e-6a4f-4d03-b9d0-3d46163e8c75.png">
+<img width="1105" alt="Screenshot 2023-01-19 at 10 58 21" src="https://user-images.githubusercontent.com/75242605/213412594-699b77eb-9ad5-4cd9-b887-4fac25c7d642.png">
+
 
 ### Question 15
 
