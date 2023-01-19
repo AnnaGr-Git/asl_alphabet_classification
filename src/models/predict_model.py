@@ -16,7 +16,7 @@ from src.models.model import MyAwesomeModel
 @click.argument("i")
 @click.option(
     "--checkpoint",
-    default="lightning_logs/version_0/checkpoints/epoch=9-step=20.ckpt",
+    default="models/latest/model.ckpt",
     help="Checkpoint file",
 )
 @click.option("--show_image", default=False, help="Show matplotlib image", is_flag=True)
