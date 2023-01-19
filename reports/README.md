@@ -467,7 +467,7 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 > *Whenever we commit code and puch to github, it auto triggers ... and ... . From there the diagram shows ...*
 >
 > Answer:
-
+![Alt text](figures/overview_mlops.png?raw=true "Flowchart")
 --- question 25 fill here ---
 
 ### Question 26
