@@ -37,7 +37,7 @@ class ASLDataset(Dataset):
 
     def __init__(
         self,
-        data_folder: typing.Union[str, pathlib.Path] = "/dlata/processed",
+        data_folder: typing.Union[str, pathlib.Path] = "data/processed",
         train: bool = True,
         img_file: str = "images.pt",
         label_file: str = "labels.npy",

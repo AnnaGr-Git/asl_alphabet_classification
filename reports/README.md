@@ -58,7 +58,7 @@ end of the project.
 * [x] Add a model file and a training script and get that running
 * [x] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
 * [x] Remember to comply with good coding practices (`pep8`) while doing the project
-* [ ] Do a bit of code typing and remember to document essential parts of your code
+* [x] Do a bit of code typing and remember to document essential parts of your code
 * [x] Setup version control for your data or part of your data
 * [x] Construct one or multiple docker files for your code
 * [x] Build the docker files locally and make sure they work as intended
@@ -78,10 +78,10 @@ end of the project.
 * [x] Get some continuous integration running on the github repository
 * [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [x] Create a trigger workflow for automatically building your docker images
-* [ ] Get your model training in GCP using either the Engine or Vertex AI
-* [ ] Create a FastAPI application that can do inference using your model
+* [x] Get your model training in GCP using either the Engine or Vertex AI
+* [x] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
-* [ ] Deploy your model in GCP using either Functions or Run as the backend
+* [x] Deploy your model in GCP using either Functions or Run as the backend
 
 ### Week 3
 
@@ -254,7 +254,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 11 fill here ---
+--- At the moment we have on github actions workflow. Here, we run the previously written tests, and evaluates them on the codebase. This runs on push events found in the master, main, and make_data branches. We have setup the corresponding .yaml file to spin up a ubuntu-latest machine running python 3.10. Following this, the required modules as described in the requirements.txt and requirements_test.txt are intalled. The requirements were separated into these two files, because some modules are only required for testing and would thus make the install size of those only wanting to use the repository for production. Following this, the github action executes the tests found in the test directory with pytest. While we did not use caching in our workflows, we recognize the utility and efficiency increase it would bring when runnning our actions. This would come in exceptional useful for use as pytorch is a huge dependency, and installing it everytime has a huge time overhead. This workflow is found described by the test.yaml file in the github/workflows directory. An interesting thing we found when setting up the worflow is the string parsing of yaml files. As we were using python 3.10 we set the value of the python version to 3.10, without quatiation marks. The yaml parser thought this is a number, so it took a few minutes for us to realize that this was the problem. This was easily solved ---
 
 ## Running code and tracking experiments
 
@@ -273,7 +273,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 12 fill here ---
+--- We used hydra to organize our training configurations. For each configuration, we created a exp.yaml file where the hyperparameters are stored. These parameters are passed to the training script with hydra through the default_config.yaml. In this file, the chosen experiment configuration is defined, where exp1 is default. If the user wants to choose another configuration, it can be passed using the agparser in the command line: python src/models/train_model.py experiment=exp2 ---
 
 ### Question 13
 
@@ -305,7 +305,11 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 14 fill here ---
+--- As seen in the first image, we have tracked the validation and training loss as weel as the training and validation accuracy.   ---
+      
+<img width="1440" alt="Screenshot 2023-01-19 at 10 55 17" src="https://user-images.githubusercontent.com/75242605/213412289-138d4d5e-6a4f-4d03-b9d0-3d46163e8c75.png">
+<img width="1105" alt="Screenshot 2023-01-19 at 10 58 21" src="https://user-images.githubusercontent.com/75242605/213412594-699b77eb-9ad5-4cd9-b887-4fac25c7d642.png">
+
 
 ### Question 15
 
@@ -320,7 +324,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 15 fill here ---
+--- For our project we developed several images. One is used for local training ([local dockerfile](https://github.com/AnnaGr-Git/asl_alphabet_classification/blob/master/trainer_local.dockerfile)), one for pushing the image to a GCP bucket to use it for training with Vertex AI ([cloud dockerfile](https://github.com/AnnaGr-Git/asl_alphabet_classification/blob/master/trainer_cloud.dockerfile)), and one for creating the FastAPI app ([FastAPI dockerfile](https://github.com/AnnaGr-Git/asl_alphabet_classification/blob/master/fastapi_app.dockerfile)). The local file can be used from developers who would like to create their own local docker image to share it. The cloud file gets triggered every time changes get pushed to main, so always the newest docker image is available. The image always gets the newest version of the data by `dcv pull`, preprocesses the data and runs a training. This image can be accessed a described in the readme, and can be used for training with Vertex AI. For using this image for training locally, do `docker run trainer:latest`. The FastAPI file gets triggered every time changes get pushed to main, and creates an image that can be accessed by the end user through the API.  ---
 
 ### Question 16
 
@@ -335,7 +339,9 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 16 fill here ---
+--- Debugging varied from group member to group member, and the file in which the problem occured. For python files we mainly relied on the python interpreters verbose error logging. If this wasn't enough we used a compination of debugging as well as the python REPL to gain an understanding of what went wrong. Although when we used click, the debugger wasn't a big help, so we resorted to using the good old method of writing print() statements. Throughout the course of the project we developed better understanding of the python debugger and increased our reliance on it as the days progressed. 
+
+We didn't do much in terms of profiling, any implemented speed impovements were the result of obviously not performant code. As at this stage the project is in what would be considered the MVP stage, we didn't place much value in optimizing the code. ---
 
 ## Working in the cloud
 
@@ -352,7 +358,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 17 fill here ---
+--- We used the following GCP services: Cloud Storage (Buckets), Container Registry, Vertex AI, Cloud Build and Cloud Run. We have three buckets: one to storaé the data that gets accessed by dvc, one for storing the docker images, and one for saving the model files. In the container registry, we have access to the train images and the fastapi images. Vertex AI is used to train models in the cloud as described in the readme of the repository. This accesses the train image stored in the Cloud Storage. Cloud Build is used to create a new docker image and save it to the cloud storage every time someone pushes code to the main branch. The trigger is directly connected to the github repository. Cloud Run is used to create a service that builds a docker container based on the FastAPI docker file in the repository, which allows the end user to access the API through simple http or curl commands. ---
 
 ### Question 18
 
@@ -382,7 +388,9 @@ Then, everything is ready to use.---
 
 > **Upload one image of your GCP container registry, such that we can see the different images that you have stored.**
 > **You can take inspiration from [this figure](figures/registry.png).**
->
+>Debugging varied from group member to group member, and the file in which the problem occured. For python files we mainly relied on the python interpreters verbose error logging. If this wasn't enough we used a compination of debugging as well as the python REPL to gain an understanding of what went wrong. Although when we used click, the debugger wasn't a big help, so we resorted to using the good old method of writing print() statements. Throughout the course of the project we developed better understanding of the python debugger and increased our reliance on it as the days progressed. 
+
+We didn't do much in terms of profiling, any implemented speed impovements were the result of obviously not performant code. As at this stage the project is in what would be considered the MVP stage, we didn't place much value in optimizing the code.
 > Answer:
 
 --- question 20 fill here ---

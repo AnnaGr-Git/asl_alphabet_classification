@@ -1,6 +1,9 @@
 from pathlib import Path
-
+from PIL import Image
 import click
+import timm
+from torchvision import transforms
+
 
 # import helper
 import matplotlib.pyplot as plt
@@ -13,27 +16,32 @@ from src.models.model import MyAwesomeModel
 
 
 @click.command()
-@click.argument("i")
+@click.argument("img_path")
 @click.option(
     "--checkpoint",
-    default="lightning_logs/version_0/checkpoints/epoch=9-step=20.ckpt",
+    default="models/latest/model.ckpt",
     help="Checkpoint file",
 )
 @click.option("--show_image", default=False, help="Show matplotlib image", is_flag=True)
-def main(i: int, checkpoint: Path, show_image: bool) -> None:
+def main(img_path: Path, checkpoint: Path, show_image: bool) -> None:
     # print("Evaluating until hitting the ceiling")
 
     root_path = Path()
     # print(root_path.absolute() / "data/processed")
     test_set = ASLDataset(data_folder=root_path / "data/processed", train=False, onehotencoded=True)
-
-    img, y = test_set[int(i)]
-    x = img.view(1, *img.shape)
+    #img, y = test_set[int(i)]
 
     model = MyAwesomeModel.load_from_checkpoint(checkpoint)
-
     # disable randomness, dropout, etc...
     model.eval()
+
+    # Get image from path
+    img = Image.open(img_path)
+    # Convert PIL img to tensor
+    convert_tensor = transforms.ToTensor()
+    img_t = convert_tensor(img)
+
+    x = img_t.view(1, *img_t.shape)
 
     # print(x.shape)
 
@@ -44,7 +52,7 @@ def main(i: int, checkpoint: Path, show_image: bool) -> None:
     _, pred_class = y_hat.topk(1, dim=1)
 
     pred_y = int(pred_class[0, 0])
-    true_y = int([i for i, _ in enumerate(y) if y[i] == 1][0])
+    #true_y = int([i for i, _ in enumerate(y) if y[i] == 1][0])
     # click.echo(f"predict y item: {pred_y}")
     # click.echo(f"true y item: {true_y}")
     # print([i for i in test_set.classes.keys() if test_set.classes[i] == pred_y])
@@ -56,8 +64,8 @@ def main(i: int, checkpoint: Path, show_image: bool) -> None:
     # Show image in plot
 
     if show_image:
-        img_show = torch.swapaxes(img, 2, 0)
-        plt.imshow(img_show)
+        #img_show = img.permute(1, 2, 0)
+        plt.imshow(img)
         plt.show()
 
 
