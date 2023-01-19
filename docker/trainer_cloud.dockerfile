@@ -32,4 +32,4 @@ RUN pip install dvc[gs]
 RUN pip install -e .
 RUN ls
 
-ENTRYPOINT ["sh", "entrypoint.sh"]
+ENTRYPOINT ["sh", "docker/entrypoint.sh"]
