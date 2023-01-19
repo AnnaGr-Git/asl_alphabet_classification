@@ -110,14 +110,6 @@ curl -X 'POST' \
 -F 'data=@<PATH_TO_IMAGE_FILE;type=image/jpeg'
 ```
 
-### Deploying the model in Cloud (with FastAI):
-
-
-
-### Parameters
-
-TODO: explain the parameters
-
 ## Docker
 
 ### Reproduce using the newest build with Docker image
