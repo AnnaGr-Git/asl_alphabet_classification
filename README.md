@@ -17,6 +17,8 @@ Thirdly, it can help improve accessibility in various settings, such as in the c
 
 Lastly, It can be used to create more inclusive and accessible products and services. It's a step towards creating technology that is accessible to all, regardless of ability.
 
+## Project flowchart
+![Alt text](reports/figures/overview_mlops.png?raw=true "Flowchart")
 ## Getting Started
 
 ### Python environment
