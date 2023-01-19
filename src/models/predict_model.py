@@ -1,15 +1,10 @@
 from pathlib import Path
 
 import click
-
-# import helper
 import matplotlib.pyplot as plt
-
-# import numpy as np
 from PIL import Image
 from torchvision import transforms
 
-from src.data.make_dataset import ASLDataset
 from src.models.model import MyAwesomeModel
 
 
@@ -25,9 +20,37 @@ def main(img_path: Path, checkpoint: Path, show_image: bool) -> None:
     """Main function to predict the asl letter given an image path"""
     # print("Evaluating until hitting the ceiling")
 
-    root_path = Path()
-    # print(root_path.absolute() / "data/processed")
-    test_set = ASLDataset(data_folder=root_path / "data/processed", train=False, onehotencoded=True)
+    classes = {
+        "A": 0,
+        "B": 1,
+        "C": 2,
+        "D": 3,
+        "E": 4,
+        "F": 5,
+        "G": 6,
+        "H": 7,
+        "I": 8,
+        "J": 9,
+        "K": 10,
+        "L": 11,
+        "M": 12,
+        "N": 13,
+        "O": 14,
+        "P": 15,
+        "Q": 16,
+        "R": 17,
+        "S": 18,
+        "T": 19,
+        "U": 20,
+        "V": 21,
+        "W": 22,
+        "X": 23,
+        "Y": 24,
+        "Z": 25,
+        "del": 26,
+        "nothing": 27,
+        "space": 28,
+    }
     # img, y = test_set[int(i)]
 
     model = MyAwesomeModel.load_from_checkpoint(checkpoint)
@@ -55,9 +78,10 @@ def main(img_path: Path, checkpoint: Path, show_image: bool) -> None:
     # click.echo(f"predict y item: {pred_y}")
     # click.echo(f"true y item: {true_y}")
     # print([i for i in test_set.classes.keys() if test_set.classes[i] == pred_y])
+
     click.echo(
         f"predicted letter: \
-            {[i for i in test_set.classes.keys() if test_set.classes[i] == pred_y][0]}"
+            {[i for i in classes.keys() if classes[i] == pred_y][0]}"
     )
     # click.echo(f"true y letter: {[i for i in test_set.classes.keys()
     # if test_set.classes[i] == true_y][0]}")
