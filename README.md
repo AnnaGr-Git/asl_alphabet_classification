@@ -76,7 +76,11 @@ After running the command, the `data/` directory will be created and the data wi
 
 Run the following command to preprocess the data.
 ```shell
-python src/data/make_dataset.py preprocess
+python src/data/make_dataset.py preprocess-command
+```
+You can decide how many samples you want to include per class in the dataset by typing e.g.
+```shell
+python src/data/make_dataset.py preprocess-command --num_samples=5
 ```
 
 ## Train model
