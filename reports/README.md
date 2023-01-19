@@ -309,8 +309,9 @@ Then, everything is ready to use.---
 
 As seen in the second image we are also tracking the confusion matrix in the validation set at the end of each epoch which is a better visualization of how the model is making predictions and comparing it with the true label of the input. So we can see, in each of the experiments, how the confusion matrix changed in every epoch during the training. The matrix can show us which labels have higher or lower accuracy, and also which labels the model gets more "confused" about.
 
-<img width="1440" alt="Screenshot 2023-01-19 at 10 55 17" src="https://user-images.githubusercontent.com/75242605/213412289-138d4d5e-6a4f-4d03-b9d0-3d46163e8c75.png">
-<img width="1105" alt="Screenshot 2023-01-19 at 10 58 21" src="https://user-images.githubusercontent.com/75242605/213412594-699b77eb-9ad5-4cd9-b887-4fac25c7d642.png"> ---
+![image](https://user-images.githubusercontent.com/75242605/213412289-138d4d5e-6a4f-4d03-b9d0-3d46163e8c75.png)
+![image](https://user-images.githubusercontent.com/75242605/213412594-699b77eb-9ad5-4cd9-b887-4fac25c7d642.png)
+---
 
 ### Question 15
 
@@ -433,7 +434,7 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 >
 > Answer:
 
---- question 23 fill here ---
+--- We did not manage to implement monitoring. We would like to have monitoring implemented such that over time we could measure errors, logs, and performance. That would help monitor the longevity of our application providing visibility into the performance and reliability of our model. This would help us detect and diagnose issues, such as data drift or model degradation, in an early stage, so that we can take corrective action before they become major problems. Other than that, monitoring could help us to understand how the model is being used, which can inform decisions about how to optimize its performance and improve its overall quality. ---
 
 ### Question 24
 
@@ -467,7 +468,7 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 > *Whenever we commit code and puch to github, it auto triggers ... and ... . From there the diagram shows ...*
 >
 > Answer:
---- 
+---
 ![Alt text](figures/overview_mlops.png?raw=true "Flowchart")
 
 --- The starting point of our diagram is our local setup. Each developer can clone the github project and work on their local machine. For a clear organization of our project, we used the cookie cutter for data science template. In order to run the code and have the same setup on every machine, the packages and python requirements are organized with an anaconda environment. In order to simplify the code and avoid boilerplating, we use the pytorch lightning library. For reproducability, the hyperparameters of every training should be logged. For that reason, hydra is used to read and pass the config-files of different experiments where configuration can be specified or overridden from the command line. In order to log and visualize the training experiments, we used "Weights&Biases" where every team member has access to the shared project. In order to version control the data without pushing everyting to the github repository, dvc is used with the Google Cloud storage. Each version of the data can be pushed and pulled with DVC. For a continuous integration, we added pre-commit hooks where the format of the code is checked and corrected using flake8 and black among others before being committed and pushed to the github repository. Additionally, pytest test functions were created where the code functions are checked for its correctness. Github actions runs this pytests automatically, as soon as there are push or pull requests on the main branch.
