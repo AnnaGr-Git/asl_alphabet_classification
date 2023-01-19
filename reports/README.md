@@ -480,7 +480,13 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 >
 > Answer:
 
---- question 26 fill here ---
+--- An interesting we ran into on the first few days of the project was that the free credits on google cloud were suddenly used up. We didn't have any services running that would have warranted such a deduction, so we spent some time looking into what could have caused it. In the end we coudn't definitely prove what becamo of those cloud credits, but we suspect an attack with some relation to crypto mining, as we found crypto related files on our S3 bucket.
+
+On the more technical side, integrating all the component systems into one cohesive product was a complicated enngagement, but fun nonetheless. Individually, each module was a small challenge in itself to sufficiently find our way around it, but that challenge grew exponentially when we attempted to integrate them all with each other. We found that the group aspect of this ocurse was one of the best yet. We absolutely felt like a team in a company, with each of us responsible for a different aspect of the product. Due to this, we could overcome the challenge of integrating the different parts with each other.
+
+Speaking of the group aspect, although we felt that on the technical side we could solve anything, we lacked the proper managment structures to extract the most potential. While we have al used them, none of us took it upon ourselves to create a kanban board for tracking tasks, and at time we didn't utilize git branches to their full potential, often commiting directly to master. 
+
+And last but not least, one member of our group overcame great emotional struggle when he got stuck in the elavator of building 310. ---
 
 ### Question 27
 
