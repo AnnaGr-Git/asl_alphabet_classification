@@ -19,6 +19,24 @@ Lastly, It can be used to create more inclusive and accessible products and serv
 
 ## Project flowchart
 ![Alt text](reports/figures/overview_mlops.png?raw=true "Flowchart")
+
+## Using the model
+To use the model to get the corresponding letter shown in an image, run from the command line:
+
+```curl -X 'POST' \
+  'https://gcp-api-new-kge344k7fa-ew.a.run.app/predict' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'data=@A_test.jpg;type=image/jpeg'
+```
+and change the path to the local path of your image, 
+
+or type in a browser: 
+```
+https://gcp-api-test-kge344k7fa-ew.a.run.app/docs
+```
+and upload your picture.
+  
 ## Getting Started
 
 ### Python environment
@@ -58,7 +76,11 @@ After running the command, the `data/` directory will be created and the data wi
 
 Run the following command to preprocess the data.
 ```shell
-python src/data/make_dataset.py preprocess
+python src/data/make_dataset.py preprocess-command
+```
+You can decide how many samples you want to include per class in the dataset by typing e.g.
+```shell
+python src/data/make_dataset.py preprocess-command --num_samples=5
 ```
 
 ## Train model
@@ -79,7 +101,7 @@ python src/models/train_model.py experiment=exp2 experiment.trainsize=0.8
 ### Deploying the model locally (with FastAI):
 Run in command-line:
 ```shell
-uvicorn --reload --port 8000 app:app
+uvicorn --reload --port 8000 src.app.deploy_app:app
 ```
 Either use the predict functionality in http://127.0.0.1:8000/docs to insert an image-file
 or
@@ -91,14 +113,6 @@ curl -X 'POST' \
 -H 'Content-Type: multipart/form-data' \
 -F 'data=@<PATH_TO_IMAGE_FILE;type=image/jpeg'
 ```
-
-### Deploying the model in Cloud (with FastAI):
-
-
-
-### Parameters
-
-TODO: explain the parameters
 
 ## Docker
 
