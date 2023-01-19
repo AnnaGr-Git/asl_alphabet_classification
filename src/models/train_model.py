@@ -45,7 +45,7 @@ def main(config: Any) -> None:
         log_every_n_steps=1,
         logger=WandbLogger(project=wandb_proj_name),
         accelerator=device,
-        default_root_dir=root_path / "models/latest"
+        default_root_dir=root_path / "models/latest",
     )
 
     # root_path = Path()
@@ -79,15 +79,17 @@ def main(config: Any) -> None:
     # checking if the directory demo_folder
     # exist or not.
     # if not os.path.exists("models/latest/"):
-        
+
     #     # if the demo_folder directory is not present
     #     # then create it.
     #     os.makedirs("models/latest/")
 
     trainer.save_checkpoint("models/latest/model.ckpt")
+    wandb.save("models/latest/model.ckpt")
     # MyAwesomeModel._save_to_state_dict(model.state_dict(), 'models/latest/model.pt')
 
     # torch.save(model.state_dict(), 'models/latest/model.pt')
+
 
 if __name__ == "__main__":
     main()
