@@ -121,6 +121,7 @@ class MyAwesomeModel(LightningModule):
         im = transforms.ToTensor()(im)
         self.logger.log_image(key="val_confusion_matrix", images=[im])
         plt.clf()
+        plt.close()
 
     def configure_optimizers(self) -> Any:
         """Configure optimizer"""
