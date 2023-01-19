@@ -24,6 +24,7 @@ COPY .git .git
 COPY data.dvc data.dvc
 COPY entrypoint.sh entrypoint.sh
 COPY config/ config/
+COPY models/ models/
 
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install wandb
