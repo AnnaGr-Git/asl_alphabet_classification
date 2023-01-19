@@ -391,7 +391,7 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 >
 > Answer:
 
---- ![image](https://user-images.githubusercontent.com/75242605/213457517-dc49d937-674d-4eee-84ce-a38fd4575ca6.png) ---
+--- ![image](https://user-images.githubusercontent.com/75242605/213458122-757a7d6b-52a8-429d-8105-60d2516a0403.png) ---
 
 ### Question 21
 
