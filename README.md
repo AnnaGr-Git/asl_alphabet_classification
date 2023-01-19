@@ -29,6 +29,7 @@ To use the model to get the corresponding letter shown in an image, run from the
   -H 'Content-Type: multipart/form-data' \
   -F 'data=@A_test.jpg;type=image/jpeg'
 ```
+and change the path to the local path of your image, 
 
 or type in a browser: 
 ```
