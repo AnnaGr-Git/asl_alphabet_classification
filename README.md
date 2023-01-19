@@ -7,7 +7,15 @@ ASL Alphabet Classification
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white)
 
-In this project, we will classify images of ASL-hand-signs into the corresponding letters.
+In this project, we will classify images of ASL-hand-signs into the corresponding letters. Machine learning-based translation of American Sign Language (ASL) hand signs into corresponding letters is a system that uses computer vision and machine learning techniques to identify and interpret ASL hand signs and convert them into written text. This system is useful for a variety of reasons.
+
+Firstly, it can help facilitate communication between individuals who are deaf or hard of hearing and those who are not. By converting ASL into written text, it allows for a common mode of communication between people with different abilities, which can help bridge the communication gap and improve accessibility.
+
+Secondly, this technology can be used to transcribe ASL into written text, which can be useful for educational or documentation purposes. It can help educators to create written records of what was signed during a class or meeting, and it can also be used to create written documents for people who are deaf or hard of hearing.
+
+Thirdly, it can help improve accessibility in various settings, such as in the classroom or the workplace. It can be used to create assistive devices, such as gloves or smartwatches, that can help people who are deaf or hard of hearing to communicate more easily.
+
+Lastly, It can be used to create more inclusive and accessible products and services. It's a step towards creating technology that is accessible to all, regardless of ability.
 
 ## Getting Started
 
