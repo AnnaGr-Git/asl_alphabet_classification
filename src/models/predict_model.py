@@ -56,7 +56,7 @@ def main(i: int, checkpoint: Path, show_image: bool) -> None:
     # Show image in plot
 
     if show_image:
-        img_show = torch.swapaxes(img, 2, 0)
+        img_show = img.permute(1, 2, 0)
         plt.imshow(img_show)
         plt.show()
 
