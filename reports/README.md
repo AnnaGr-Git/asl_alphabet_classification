@@ -324,7 +324,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- For our project we developed several images. One is used for local training ([local dockerfile] (https://github.com/AnnaGr-Git/asl_alphabet_classification/blob/master/trainer_local.dockerfile), one for pushing the image to a GCP bucket to use it for training with Vertex AI ([cloud dockerfile] (https://github.com/AnnaGr-Git/asl_alphabet_classification/blob/master/trainer_cloud.dockerfile)), and one for creating the FastAPI app ([FastAPI dockerfile] (https://github.com/AnnaGr-Git/asl_alphabet_classification/blob/master/fastapi_app.dockerfile)) ---
+--- For our project we developed several images. One is used for local training ([local dockerfile](https://github.com/AnnaGr-Git/asl_alphabet_classification/blob/master/trainer_local.dockerfile), one for pushing the image to a GCP bucket to use it for training with Vertex AI ([cloud dockerfile](https://github.com/AnnaGr-Git/asl_alphabet_classification/blob/master/trainer_cloud.dockerfile)), and one for creating the FastAPI app ([FastAPI dockerfile](https://github.com/AnnaGr-Git/asl_alphabet_classification/blob/master/fastapi_app.dockerfile)) ---
 
 ### Question 16
 
