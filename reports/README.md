@@ -193,7 +193,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 7 fill here ---
+--- We implemented a test to check if the make_dataset.py file creates data of the correct shape. Also, we implemented a test of the model.py to check the output of the model after passing dummy data. ---
 
 ### Question 8
 
@@ -208,7 +208,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 8 fill here ---
+--- The total coverage of our code is 44%, which includes.... This and that is missing.... ---
 
 ### Question 9
 
@@ -238,7 +238,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 10 fill here ---
+--- We used DVC to store and version control our data. In that way, everyone from the team can push and pull the data with dvc from the Google S3 bucket and access it. Since the data.dvc file is pushed to the project's github and tagged with the data version, we can access the data from older versions. In case accidentaly data gets lost or data is updated, the old files can be restored. At the same time, it is useful that the data is stored in a compressed way in our google cloud bucket instead of pushing big data files to the github repository. ---
 
 ### Question 11
 
@@ -254,7 +254,7 @@ Then, everything is ready to use.---
 >
 > Answer:
 
---- question 11 fill here ---
+--- At the moment we have on github actions workflow. Here, we run the previously written tests, and evaluates them on the codebase. This runs on push events found in the master, main, and make_data branches. We have setup the corresponding .yaml file to spin up a ubuntu-latest machine running python 3.10. Following this, the required modules as described in the requirements.txt and requirements_test.txt are intalled. The requirements were separated into these two files, because some modules are only required for testing and would thus make the install size of those only wanting to use the repository for production. Following this, the github action executes the tests found in the test directory with pytest. While we did not use caching in our workflows, we recognize the utility and efficiency increase it would bring when runnning our actions. This would come in exceptional useful for use as pytorch is a huge dependency, and installing it everytime has a huge time overhead. This workflow is found described by the test.yaml file in the github/workflows directory. An interesting thing we found when setting up the worflow is the string parsing of yaml files. As we were using python 3.10 we set the value of the python version to 3.10, without quatiation marks. The yaml parser thought this is a number, so it took a few minutes for us to realize that this was the problem. This was easily solved ---
 
 ## Running code and tracking experiments
 

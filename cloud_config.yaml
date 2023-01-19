@@ -9,7 +9,7 @@ workerPoolSpecs:
       - name: WANDB_API_KEY
         value: "def55c27ab4c0ae01a92a8130377492038a4897c"
       - name: EXP
-        value: "experiment=exp2"
+        value: "experiment=exp1"
 
 
 
