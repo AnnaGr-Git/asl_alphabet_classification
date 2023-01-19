@@ -74,7 +74,7 @@ python src/models/train_model.py experiment=exp2 experiment.trainsize=0.8
 ```
 
 ## Predict with model
-# Deploying the model locally (with FastAI):
+### Deploying the model locally (with FastAI):
 Run in command-line:
 ```shell
 uvicorn --reload --port 8000 app:app
@@ -89,6 +89,8 @@ curl -X 'POST' \
 -H 'Content-Type: multipart/form-data' \
 -F 'data=@<PATH_TO_IMAGE_FILE;type=image/jpeg'
 ```
+
+### Deploying the model in Cloud (with FastAI):
 
 
 
