@@ -59,7 +59,7 @@ Run the following command to preprocess the data.
 python src/data/make_dataset.py preprocess
 ```
 
-## Train and Evaluate
+## Train model
 Default training (config/experiment/exp1.yaml will be used):
 ```shell
 python src/models/train_model.py
@@ -72,6 +72,26 @@ Change parameters (e.g. trainsize) of config in command-line:
 ```shell
 python src/models/train_model.py experiment=exp2 experiment.trainsize=0.8
 ```
+
+## Predict with model
+### Deploying the model locally (with FastAI):
+Run in command-line:
+```shell
+uvicorn --reload --port 8000 app:app
+```
+Either use the predict functionality in http://127.0.0.1:8000/docs to insert an image-file
+or
+run in command-line:
+```shell
+curl -X 'POST' \
+'http://127.0.0.1:8000/predict' \
+-H 'accept: application/json' \
+-H 'Content-Type: multipart/form-data' \
+-F 'data=@<PATH_TO_IMAGE_FILE;type=image/jpeg'
+```
+
+### Deploying the model in Cloud (with FastAI):
+
 
 
 ### Parameters
