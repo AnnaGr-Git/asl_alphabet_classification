@@ -419,7 +419,11 @@ We didn't do much in terms of profiling, any implemented speed impovements were 
 >
 > Answer:
 
---- question 22 fill here ---
+--- We managed to deploy our model both locally and in the cloud. To create the app, we created a file called deploy_app.py. This allows to upload an image and then calls the predict function. To deploy it in the cloud, we created another docker file called deployment_app.dockerfile. This docker file gets triggered every time someone pushed to main and updated the image used in deployment. We created a service in Cloud Run, which does that. To access the API and use the model, one call call ``` 'https://gcp-api-new-kge344k7fa-ew.a.run.app/predict' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'data=@A_test.jpg;type=image/jpeg' ```
+with its own configured path to the image, or type ```https://gcp-api-test-kge344k7fa-ew.a.run.app/docs in the browser and upload the image. The service runs on 8 GB memory on 4 CPUs. ``` ---
 
 ### Question 23
 
