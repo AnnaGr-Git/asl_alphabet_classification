@@ -23,7 +23,8 @@ Lastly, It can be used to create more inclusive and accessible products and serv
 ## Using the model
 To use the model to get the corresponding letter shown in an image, run from the command line:
 
-```curl -X 'POST' \
+```
+  curl -X 'POST' \
   'https://gcp-api-kge344k7fa-ew.a.run.app/predict' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
