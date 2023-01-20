@@ -520,4 +520,6 @@ The making of the dataset, the config files, the testing  and the github actions
       
 Victor (s220285) was our reproducibility compliance officer. His responsibilities included setting up WandB and integrating it within the project. Additionally Victor developed our pre-commit workflow, making sure the pushed code matched our project's code standards.
       
-The model and the training loop was developed by Kristof (s220279). His tasks included creating a model that would suit the project's goals by selecting the model, making it ready for fine tuning, and the training loop itself. Furthermore, as the in-house Pythonista Kristof aided the group as an everyman, this included help with debugging, advising on code structure, as well as general Python best practices. ---
+The model and the training loop was developed by Kristof (s220279). His tasks included creating a model that would suit the project's goals by selecting the model, making it ready for fine tuning, and the training loop itself. Furthermore, as the in-house Pythonista Kristof aided the group as an everyman, this included help with debugging, advising on code structure, as well as general Python best practices. 
+
+Besides the above mentioned main responsibilities, the whole group discussed together on how to solve the tasks and we helped each other out when problems came up. Everyone gained a general understanding of all tasks and challenges were solved with team power.---
