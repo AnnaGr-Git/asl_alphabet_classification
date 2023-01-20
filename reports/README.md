@@ -512,4 +512,10 @@ And last but not least, one member of our group overcame great emotional struggl
 >
 > Answer:
 
---- question 27 fill here ---
+--- Daniel (s212599) was our cloud ninja, he was responsible for everything pertaining to the cloud infrastructure, this included building the docker files, deploying to Google Cloud, and managing GC permissions for the the rest of the team. 
+      
+The making of the dataset, the config files, the testing  and the github actiones were the responsibility of Anna (s213637), our data guru. She devised the way to load, and version our dataset aswell as devising how to best transform the data to work with our model. 
+      
+Victor (s220285) was our reproducibility conformance officer. His repsonsibilities included setting up wandb, integrating integrating it within the project. Additionally Victor developed our pre-commit workflow, making sure the pushed code matched our project code standards.
+      
+The model and the training loop was developed by Kristof (s220279). His tasks included transforming the existing model to suit the projects goals by selecting the model, making it ready for fine tuning, and the training loop itself. Furthermore, as the in-house Pythonista Kristof aided the group as an everyman, this included help with debugging, advising on code structure, aswell as general python best practices. ---
