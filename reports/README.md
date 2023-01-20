@@ -514,8 +514,8 @@ And last but not least, one member of our group overcame great emotional struggl
 
 --- Daniel (s212599) was our cloud ninja, he was responsible for everything pertaining to the cloud infrastructure, this included building the docker containers, deploying to Google Cloud, managing Bucket, API, Container registry, and overseeing GC permissions for the the rest of the team.
       
-The making of the dataset, the config files, the testing  and the github actiones were the responsibility of Anna (s213637), our data guru. She devised the way to load, and version our dataset aswell as devising how to best transform the data to work with our model. 
+The making of the dataset, the config files, the testing  and the github actions were the responsibility of Anna (s213637), our data guru. She devised the way to load and version our dataset as well as coming up with how to best transform the data to work with our model. 
       
-Victor (s220285) was our reproducibility conformance officer. His repsonsibilities included setting up wandb, integrating integrating it within the project. Additionally Victor developed our pre-commit workflow, making sure the pushed code matched our project code standards.
+Victor (s220285) was our reproducibility compliance officer. His responsibilities included setting up WandB and integrating it within the project. Additionally Victor developed our pre-commit workflow, making sure the pushed code matched our project's code standards.
       
-The model and the training loop was developed by Kristof (s220279). His tasks included transforming the existing model to suit the projects goals by selecting the model, making it ready for fine tuning, and the training loop itself. Furthermore, as the in-house Pythonista Kristof aided the group as an everyman, this included help with debugging, advising on code structure, aswell as general python best practices. ---
+The model and the training loop was developed by Kristof (s220279). His tasks included creating a model that would suit the project's goals by selecting the model, making it ready for fine tuning, and the training loop itself. Furthermore, as the in-house Pythonista Kristof aided the group as an everyman, this included help with debugging, advising on code structure, as well as general Python best practices. ---
