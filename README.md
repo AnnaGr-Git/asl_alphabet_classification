@@ -21,7 +21,7 @@ Lastly, It can be used to create more inclusive and accessible products and serv
 ![Alt text](reports/figures/overview_mlops.png?raw=true "Flowchart")
 
 ## Using the model
-To use the model to get the corresponding letter shown in an image, run from the command line: (update)
+To use the model to get the corresponding letter shown in an image, run from the command line:
 
 ```curl -X 'POST' \
   'https://gcp-api-kge344k7fa-ew.a.run.app/predict' \
