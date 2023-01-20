@@ -24,7 +24,7 @@ Lastly, It can be used to create more inclusive and accessible products and serv
 To use the model to get the corresponding letter shown in an image, run from the command line: (update)
 
 ```curl -X 'POST' \
-  'https://gcp-api-new-kge344k7fa-ew.a.run.app/predict' \
+  'https://gcp-api-kge344k7fa-ew.a.run.app/predict' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -F 'data=@A_test.jpg;type=image/jpeg'
@@ -33,7 +33,7 @@ and change the path to the local path of your image,
 
 or type in a browser: 
 ```
-https://gcp-api-test-kge344k7fa-ew.a.run.app/docs
+https://gcp-api-kge344k7fa-ew.a.run.app/docs
 ```
 and upload your picture.
   
