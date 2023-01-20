@@ -16,12 +16,12 @@ RUN pip install --upgrade pip
 # Make sure gsutil will use the default service account
 RUN echo '[GoogleCompute]\nservice_account = default' > /etc/boto.cfg
 
-COPY ./requirements.txt requirements.txt
-COPY ./setup.py setup.py
-COPY ./src/ src/
+COPY ../requirements.txt requirements.txt
+COPY ../setup.py setup.py
+COPY ../src/ src/
 COPY .git .git
-COPY ./models/ models/
-COPY ./deploy_app.py deploy_app.py
+COPY ../models/ models/
+COPY ../deploy_app.py deploy_app.py
 
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install python-multipart
