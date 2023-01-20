@@ -514,12 +514,12 @@ And last but not least, one member of our group overcame great emotional struggl
 >
 > Answer:
 
---- Daniel (s212599) was our cloud ninja, he was responsible for everything pertaining to the cloud infrastructure, this included building the docker containers, deploying to Google Cloud, managing Bucket, API, Container registry, and overseeing GC permissions for the the rest of the team.
-      
-The making of the dataset, the config files, the testing  and the github actions were the responsibility of Anna (s213637), our data guru. She devised the way to load and version our dataset as well as coming up with how to best transform the data to work with our model. 
-      
-Victor (s220285) was our reproducibility compliance officer. His responsibilities included setting up WandB and integrating it within the project. Additionally Victor developed our pre-commit workflow, making sure the pushed code matched our project's code standards.
-      
-The model and the training loop was developed by Kristof (s220279). His tasks included creating a model that would suit the project's goals by selecting the model, making it ready for fine tuning, and the training loop itself. Furthermore, as the in-house Pythonista Kristof aided the group as an everyman, this included help with debugging, advising on code structure, as well as general Python best practices. 
+--- Daniel (s212599) was our cloud ninja, he was responsible for everything pertaining to the cloud infrastructure, this included building the docker containers, deploying to Google Cloud, managing Bucket, API, Container registry, and overseeing GC permissions the others.
 
-Besides the above mentioned main responsibilities, the whole group discussed together on how to solve the tasks and we helped each other out when problems came up. Everyone gained a general understanding of all tasks and challenges were solved with team power.---
+The making of the dataset, the config files, the testing, the deployment and the github actions were the responsibility of Anna (s213637), our data guru. She devised the way to load and version our data as well as coming up with how to best transform the data to work with our model.
+
+Victor (s220285) was our reproducibility compliance officer. His responsibilities included setting up WandB and integrating it within the project. Additionally, Victor developed our pre-commit workflow, making sure the pushed code matched our project's code standards.
+
+The model and the training was developed by Kristof (s220279). His tasks included selecting a model and making it ready for fine tuning, and the training loop itself. Furthermore, as the in-house Pythonista Kristof aided the group with debugging and the general code structure as an everyman.
+
+Besides the above mentioned main responsibilities, the whole group discussed together on how to solve the tasks and we helped each other out when problems came up.---
