@@ -512,7 +512,7 @@ And last but not least, one member of our group overcame great emotional struggl
 >
 > Answer:
 
---- Daniel (s212599) was our cloud ninja, he was responsible for everything pertaining to the cloud infrastructure, this included building the docker files, deploying to Google Cloud, and managing GC permissions for the the rest of the team. 
+--- Daniel (s212599) was our cloud ninja, he was responsible for everything pertaining to the cloud infrastructure, this included building the docker containers, deploying to Google Cloud, managing Bucket, API, Container registry, and overseeing GC permissions for the the rest of the team.
       
 The making of the dataset, the config files, the testing  and the github actiones were the responsibility of Anna (s213637), our data guru. She devised the way to load, and version our dataset aswell as devising how to best transform the data to work with our model. 
       
