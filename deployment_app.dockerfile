@@ -21,7 +21,7 @@ COPY setup.py setup.py
 COPY src/ src/
 COPY .git .git
 COPY models/ models/
-COPY deploy_app.py deploy_app.py
+#COPY deploy_app.py deploy_app.py
 
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install python-multipart
